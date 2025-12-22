@@ -4,37 +4,31 @@ import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import { useMap } from "react-leaflet";
-import type { CommodityType, MineralDeposit, SaudiRegion, TenderRound } from "@/types";
-import { mineralDeposits } from "@/lib/data/minerals";
-import { tenderRounds } from "@/lib/data/tenders";
-import { miningInfrastructure } from "@/lib/data/infrastructure";
-import { terraneBoundaries } from "@/lib/data/terrane-boundaries";
-import { saudiRegionsGeoJSON } from "@/lib/data/saudi-regions";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { MapFilters, type MapFiltersState } from "./MapFilters";
-import { MapLegend } from "./MapLegend";
-import { DepositPopup, type PopupEntity } from "./DepositPopup";
-import { TerraneOverlay } from "./TerraneOverlay";
-import { HEATMAP_GRADIENTS, type HeatmapPoint } from "./HeatmapLayer";
-import { SGSDataPanel } from "./SGSDataPanel";
-import { generateHeatmapData, generateExplorationHeatmap, getCommodityHeatmap } from "@/lib/api/geological-api";
-
-// Dynamic import for HeatmapLayer to avoid SSR issues with leaflet.heat
-const HeatmapLayer = dynamic(
-  () => import("./HeatmapLayer").then((m) => m.HeatmapLayer),
-  { ssr: false }
-);
-
-// Dynamic import for KSARegionsOverlay
-const KSARegionsOverlay = dynamic(
-  () => import("./KSARegionsOverlay").then((m) => m.KSARegionsOverlay),
-  { ssr: false }
-);
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Database, Mountain, Construction, RadioTower, Map as MapIcon, Satellite, Layers, Flame, Info, Globe } from "lucide-react";
+import {
+  Database, Mountain, Map as MapIcon, Satellite, Layers,
+  Grid3x3, Webhook, TrendingUp, MapPin
+} from "lucide-react";
+import { CellDetailsPopup } from "./CellDetailsPopup";
+import {
+  fetchGridCells,
+  fetchGeologyLayer,
+  fetchFaultsLayer,
+  fetchDikesLayer,
+  fetchMineralOccurrences,
+  getScoreColor,
+  getScoreOpacity,
+  type GeoJSONFeatureCollection,
+  type CellProperties,
+  type GeologyProperties,
+  type FaultProperties,
+  type DikeProperties,
+  type MineralOccurrenceProperties,
+} from "@/lib/api/gdac-backend";
 
 // Dynamic imports to avoid SSR issues
 const MapContainer = dynamic(() => import("react-leaflet").then((m) => m.MapContainer), { ssr: false });
@@ -44,11 +38,10 @@ const Popup = dynamic(() => import("react-leaflet").then((m) => m.Popup), { ssr:
 const ZoomControl = dynamic(() => import("react-leaflet").then((m) => m.ZoomControl), { ssr: false });
 const Polyline = dynamic(() => import("react-leaflet").then((m) => m.Polyline), { ssr: false });
 const Polygon = dynamic(() => import("react-leaflet").then((m) => m.Polygon), { ssr: false });
+const GeoJSON = dynamic(() => import("react-leaflet").then((m) => m.GeoJSON), { ssr: false });
 const LayerGroup = dynamic(() => import("react-leaflet").then((m) => m.LayerGroup), { ssr: false });
-const MarkerClusterGroup = dynamic(() => import("react-leaflet-cluster").then((m) => m.default), { ssr: false });
 
 type BaseLayer = "terrain" | "satellite";
-type HeatmapMode = "off" | "deposits" | "exploration" | "gold" | "copper" | "phosphate";
 
 const TILE_LAYERS: Record<BaseLayer, { name: string; url: string; attribution: string }> = {
   terrain: {
@@ -63,132 +56,9 @@ const TILE_LAYERS: Record<BaseLayer, { name: string; url: string; attribution: s
   },
 };
 
-const HEATMAP_MODES: { key: HeatmapMode; label: string; gradient: keyof typeof HEATMAP_GRADIENTS }[] = [
-  { key: "off", label: "Off", gradient: "default" },
-  { key: "deposits", label: "All Deposits", gradient: "default" },
-  { key: "exploration", label: "Exploration Potential", gradient: "exploration" },
-  { key: "gold", label: "Gold", gradient: "gold" },
-  { key: "copper", label: "Copper", gradient: "copper" },
-  { key: "phosphate", label: "Phosphate", gradient: "phosphate" },
-];
-
-const SAUDI_CENTER: [number, number] = [23.8859, 45.0792];
-const SAUDI_OUTLINE: [number, number][] = [
-  [32.154, 35.719],
-  [31.026, 37.998],
-  [29.357, 36.068],
-  [27.623, 35.114],
-  [26.114, 36.160],
-  [24.858, 37.483],
-  [22.994, 39.195],
-  [21.993, 38.787],
-  [20.837, 39.139],
-  [19.486, 40.501],
-  [18.616, 41.942],
-  [17.464, 42.774],
-  [17.257, 44.098],
-  [17.418, 45.396],
-  [17.934, 46.758],
-  [18.263, 47.698],
-  [20.014, 48.567],
-  [21.422, 49.135],
-  [24.121, 50.113],
-  [26.066, 50.809],
-  [27.854, 50.463],
-  [28.971, 49.116],
-  [30.059, 47.977],
-  [31.400, 46.568],
-  [32.009, 44.994],
-  [31.754, 41.889],
-  [32.154, 35.719],
-];
-
-// Coarse region bounds (lat/lng)
-const REGION_BOUNDS: Record<SaudiRegion, [[number, number], [number, number]]> = {
-  "Riyadh": [[19.0, 41.5], [27.5, 49.5]],
-  "Makkah": [[18.5, 38.0], [23.5, 42.5]],
-  "Madinah": [[22.0, 37.0], [27.5, 41.5]],
-  "Eastern Province": [[20.0, 47.0], [30.5, 55.5]],
-  "Qassim": [[23.5, 41.0], [28.5, 46.0]],
-  "Asir": [[16.5, 41.5], [21.5, 44.5]],
-  "Tabuk": [[26.0, 34.0], [31.5, 39.5]],
-  "Hail": [[25.0, 39.0], [29.5, 44.5]],
-  "Northern Borders": [[28.0, 36.0], [32.5, 45.0]],
-  "Jazan": [[16.0, 41.5], [18.5, 43.5]],
-  "Najran": [[16.0, 43.0], [19.5, 47.0]],
-  "Al Bahah": [[18.5, 40.0], [20.8, 42.5]],
-  "Al Jawf": [[28.5, 37.0], [32.5, 42.5]],
-};
-
-function commodityColor(commodities: CommodityType[]) {
-  // Priority mapping per requested legend: Au, Cu, Zn, Fe, P
-  if (commodities.includes("gold")) return "#D4AF37";
-  if (commodities.includes("copper")) return "#F59E0B";
-  if (commodities.includes("zinc")) return "#6B7280";
-  if (commodities.includes("iron")) return "#EF4444";
-  if (commodities.includes("phosphate")) return "#16A34A";
-  return "#006C35";
-}
-
-function tenderColor(status: string) {
-  if (status === "open") return "#006C35";
-  if (status === "upcoming") return "#D4AF37";
-  if (status === "awarded") return "#0EA5E9";
-  if (status === "evaluation") return "#7C3AED";
-  return "#6B7280";
-}
-
-function createDepositIcon(L: typeof import("leaflet"), color: string) {
-  return L.divIcon({
-    className: "",
-    html: `<div class="deposit-marker" style="background:${color}"></div>`,
-    iconSize: [34, 34],
-    iconAnchor: [17, 34],
-    popupAnchor: [0, -34],
-  });
-}
-
-function createTenderIcon(L: typeof import("leaflet"), color: string, animate: boolean) {
-  if (animate) {
-    return L.divIcon({
-      className: "",
-      html: `<div class="tender-pulse" style="--pulse:${color}"></div>`,
-      iconSize: [28, 28],
-      iconAnchor: [14, 14],
-      popupAnchor: [0, -14],
-    });
-  }
-  return L.divIcon({
-    className: "",
-    html: `<div style="width:14px;height:14px;border-radius:9999px;background:${color};border:2px solid white;box-shadow:0 6px 18px rgba(0,0,0,.25)"></div>`,
-    iconSize: [14, 14],
-    iconAnchor: [7, 7],
-    popupAnchor: [0, -7],
-  });
-}
-
-function createInfrastructureIcon(L: typeof import("leaflet"), color: string) {
-  return L.divIcon({
-    className: "",
-    html: `<div style="width:18px;height:18px;border-radius:6px;background:${color};border:2px solid white;box-shadow:0 6px 18px rgba(0,0,0,.25)"></div>`,
-    iconSize: [18, 18],
-    iconAnchor: [9, 9],
-    popupAnchor: [0, -9],
-  });
-}
-
-function MapZoomController({ region }: { region: SaudiRegion | "all" }) {
-  const map = useMap();
-  useEffect(() => {
-    if (region === "all") {
-      map.setView(SAUDI_CENTER, 5);
-      return;
-    }
-    const bounds = REGION_BOUNDS[region];
-    map.fitBounds(bounds, { padding: [24, 24] });
-  }, [map, region]);
-  return null;
-}
+// Map center for the data extent (116C map sheet)
+const MAP_CENTER: [number, number] = [27.3, 42.37];
+const DEFAULT_ZOOM = 10;
 
 export interface MineralMapProps {
   className?: string;
@@ -199,32 +69,43 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isClient, setIsClient] = useState(false);
   const [L, setL] = useState<typeof import("leaflet") | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const [baseLayer, setBaseLayer] = useState<BaseLayer>("terrain");
   const [layers, setLayers] = useState({
-    deposits: true,
-    terranes: true,
-    regions: true,
-    infrastructure: false,
-    tenders: true,
-    heatmap: false,
+    cells: true,
+    geology: true,
+    faults: true,
+    dikes: true,
+    minerals: true,
   });
-  const [heatmapMode, setHeatmapMode] = useState<HeatmapMode>("deposits");
 
-  const [filters, setFilters] = useState<MapFiltersState>({
-    region: "all",
-    commodities: [],
-  });
-  const [showFilters, setShowFilters] = useState(false);
-  const [showHeatmapOptions, setShowHeatmapOptions] = useState(false);
-  const [showDataSource, setShowDataSource] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Hide navbar when in fullscreen mode
+  useEffect(() => {
+    if (isFullscreen) {
+      document.body.classList.add("map-fullscreen");
+    } else {
+      document.body.classList.remove("map-fullscreen");
+    }
+    return () => {
+      document.body.classList.remove("map-fullscreen");
+    };
+  }, [isFullscreen]);
+
+  // Backend data state
+  const [cellsData, setCellsData] = useState<GeoJSONFeatureCollection<CellProperties> | null>(null);
+  const [geologyData, setGeologyData] = useState<GeoJSONFeatureCollection<GeologyProperties> | null>(null);
+  const [faultsData, setFaultsData] = useState<GeoJSONFeatureCollection<FaultProperties> | null>(null);
+  const [dikesData, setDikesData] = useState<GeoJSONFeatureCollection<DikeProperties> | null>(null);
+  const [mineralsData, setMineralsData] = useState<GeoJSONFeatureCollection<MineralOccurrenceProperties> | null>(null);
 
   useEffect(() => {
     setIsClient(true);
     import("leaflet").then((leaflet) => {
       setL(leaflet.default);
-      // Fix default marker icon paths
       delete (leaflet.default.Icon.Default.prototype as { _getIconUrl?: unknown })._getIconUrl;
       leaflet.default.Icon.Default.mergeOptions({
         iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
@@ -234,62 +115,38 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
     });
   }, []);
 
-  const availableCommodities = useMemo(() => {
-    const set = new Set<CommodityType>();
-    mineralDeposits.forEach((d) => d.commodities.forEach((c) => set.add(c)));
-    tenderRounds.forEach((t) => t.commodities.forEach((c) => set.add(c)));
-    return Array.from(set).sort((a, b) => a.localeCompare(b));
-  }, []);
+  // Fetch all data from backend
+  useEffect(() => {
+    if (!isClient) return;
 
-  const filteredDeposits = useMemo(() => {
-    return mineralDeposits.filter((d) => {
-      const regionOk = filters.region === "all" ? true : d.location.region === filters.region;
-      const commodityOk =
-        filters.commodities.length === 0 ? true : d.commodities.some((c) => filters.commodities.includes(c));
-      return regionOk && commodityOk;
-    });
-  }, [filters]);
+    async function loadData() {
+      setIsLoading(true);
+      setError(null);
 
-  const filteredTenders = useMemo(() => {
-    return tenderRounds.filter((t) => {
-      const regionOk = filters.region === "all" ? true : t.region === filters.region;
-      const commodityOk =
-        filters.commodities.length === 0 ? true : t.commodities.some((c) => filters.commodities.includes(c));
-      return regionOk && commodityOk;
-    });
-  }, [filters]);
+      try {
+        const [cells, geology, faults, dikes, minerals] = await Promise.all([
+          fetchGridCells(),
+          fetchGeologyLayer({ simplify: 0.001 }),
+          fetchFaultsLayer({ simplify: 0.001 }),
+          fetchDikesLayer({ simplify: 0.001 }),
+          fetchMineralOccurrences(),
+        ]);
 
-  const infrastructure = useMemo(() => {
-    return miningInfrastructure.filter((i) => {
-      const regionOk = filters.region === "all" ? true : i.location.region === filters.region;
-      return regionOk;
-    });
-  }, [filters.region]);
-
-  // Heatmap data based on selected mode
-  const heatmapData = useMemo((): HeatmapPoint[] => {
-    if (!layers.heatmap || heatmapMode === "off") return [];
-    
-    switch (heatmapMode) {
-      case "deposits":
-        return generateHeatmapData(filteredDeposits);
-      case "exploration":
-        return generateExplorationHeatmap();
-      case "gold":
-        return getCommodityHeatmap(mineralDeposits, "gold");
-      case "copper":
-        return getCommodityHeatmap(mineralDeposits, "copper");
-      case "phosphate":
-        return getCommodityHeatmap(mineralDeposits, "phosphate");
-      default:
-        return [];
+        setCellsData(cells);
+        setGeologyData(geology);
+        setFaultsData(faults);
+        setDikesData(dikes);
+        setMineralsData(minerals);
+      } catch (err) {
+        console.error("Failed to load geological data:", err);
+        setError(err instanceof Error ? err.message : "Failed to load data");
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }, [layers.heatmap, heatmapMode, filteredDeposits]);
 
-  const currentHeatmapGradient = useMemo(() => {
-    const mode = HEATMAP_MODES.find(m => m.key === heatmapMode);
-    return mode ? HEATMAP_GRADIENTS[mode.gradient] : HEATMAP_GRADIENTS.default;
-  }, [heatmapMode]);
+    loadData();
+  }, [isClient]);
 
   const onExport = useCallback(async () => {
     if (!containerRef.current) return;
@@ -300,15 +157,20 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
       backgroundColor: "#ffffff",
     });
     const link = document.createElement("a");
-    link.download = `saudi-mining-map-${new Date().toISOString().slice(0, 10)}.png`;
+    link.download = `gdac-prospectivity-map-${new Date().toISOString().slice(0, 10)}.png`;
     link.href = dataUrl;
     link.click();
   }, []);
 
-  const onClearFilters = useCallback(() => setFilters({ region: "all", commodities: [] }), []);
-
-  const onZoomToRegion = useCallback(() => {
-    // Actual zoom happens in MapZoomController (react-leaflet hook), this is here for UX symmetry.
+  // Create mineral marker icon
+  const createMineralIcon = useCallback((L: typeof import("leaflet")) => {
+    return L.divIcon({
+      className: "",
+      html: `<div style="width:24px;height:24px;border-radius:50%;background:#D4AF37;border:3px solid white;box-shadow:0 4px 12px rgba(0,0,0,.3)"></div>`,
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+      popupAnchor: [0, -12],
+    });
   }, []);
 
   if (!isClient || !L) {
@@ -324,38 +186,48 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
     );
   }
 
+  if (isLoading) {
+    return (
+      <div className={cn("relative rounded-2xl border border-border bg-muted/30", className)} style={{ height }}>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin w-8 h-8 border-4 border-saudi-green-500 border-t-transparent rounded-full mx-auto mb-2" />
+            <div className="text-sm text-muted-foreground">Loading geological data from backend...</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={cn("relative rounded-2xl border border-border bg-muted/30", className)} style={{ height }}>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center p-6">
+            <div className="text-red-500 mb-2">⚠️ Error loading data</div>
+            <div className="text-sm text-muted-foreground mb-4">{error}</div>
+            <div className="text-xs text-muted-foreground">
+              Make sure the backend is running at http://localhost:8000
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const tile = TILE_LAYERS[baseLayer];
 
   return (
     <div
       className={cn(
         "relative",
-        isFullscreen &&
-          "fixed inset-0 z-[1200] bg-black/90 p-2 md:p-3",
+        isFullscreen && "fixed inset-0 z-[1200] bg-black/90 p-2 md:p-3",
         className
       )}
     >
-      {/* Top controls (mobile responsive) */}
+      {/* Top controls */}
       <div className="absolute z-[1000] left-3 right-3 top-3 flex flex-col gap-2 md:flex-row md:items-start md:justify-between pointer-events-none">
-        <div className="pointer-events-auto flex items-start gap-2">
-          <Button
-            size="sm"
-            variant={showFilters ? "saudi" : "saudi-outline"}
-            onClick={() => setShowFilters((v) => !v)}
-          >
-            {showFilters ? "Hide filters" : "Filters"}
-          </Button>
-          {showFilters ? (
-            <MapFilters
-              value={filters}
-              onChange={setFilters}
-              availableCommodities={availableCommodities}
-              onZoomToRegion={onZoomToRegion}
-              onClear={onClearFilters}
-              className="w-[260px] md:w-[320px]"
-            />
-          ) : null}
-        </div>
+        <div className="pointer-events-auto"></div>
 
         <div className="pointer-events-auto flex flex-col gap-2 md:items-end">
           <div className="flex justify-end">
@@ -371,16 +243,15 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
             <Card className="sm-map-control p-2 w-fit bg-black/65 backdrop-blur">
               <div className="flex items-center gap-2 mb-1">
                 <Layers className="w-4 h-4 text-muted-foreground" aria-hidden />
-                <div className="text-xs text-muted-foreground">Layers</div>
+                <div className="text-xs text-muted-foreground">Geological Layers</div>
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 {[
-                  { key: "deposits", icon: <Database className="w-4 h-4" />, label: "Deposits" },
-                  { key: "terranes", icon: <Mountain className="w-4 h-4" />, label: "Terranes" },
-                  { key: "regions", icon: <Globe className="w-4 h-4" />, label: "KSA Regions" },
-                  { key: "infrastructure", icon: <Construction className="w-4 h-4" />, label: "Infrastructure" },
-                  { key: "tenders", icon: <RadioTower className="w-4 h-4" />, label: "Tenders" },
-                  { key: "heatmap", icon: <Flame className="w-4 h-4" />, label: "Heatmap" },
+                  { key: "cells", icon: <Grid3x3 className="w-4 h-4" />, label: "Prospectivity Grid" },
+                  { key: "geology", icon: <Mountain className="w-4 h-4" />, label: "Geology" },
+                  { key: "faults", icon: <Webhook className="w-4 h-4" />, label: "Faults" },
+                  { key: "dikes", icon: <TrendingUp className="w-4 h-4" />, label: "Dikes" },
+                  { key: "minerals", icon: <MapPin className="w-4 h-4" />, label: "Minerals" },
                 ].map((item) => (
                   <Tooltip key={item.key}>
                     <TooltipTrigger asChild>
@@ -389,14 +260,7 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
                         variant={layers[item.key as keyof typeof layers] ? "saudi" : "saudi-outline"}
                         className="h-9 w-9"
                         onClick={() => {
-                          if (item.key === "heatmap") {
-                            setShowHeatmapOptions(v => !v);
-                            if (!layers.heatmap) {
-                              setLayers((s) => ({ ...s, heatmap: true }));
-                            }
-                          } else {
-                            setLayers((s) => ({ ...s, [item.key]: !s[item.key as keyof typeof layers] }));
-                          }
+                          setLayers((s) => ({ ...s, [item.key]: !s[item.key as keyof typeof layers] }));
                         }}
                         aria-pressed={layers[item.key as keyof typeof layers]}
                         aria-label={item.label}
@@ -408,32 +272,6 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
                   </Tooltip>
                 ))}
               </div>
-
-              {/* Heatmap Mode Selector */}
-              {showHeatmapOptions && (
-                <div className="mt-2 p-2 bg-black/50 rounded-lg">
-                  <div className="text-xs text-muted-foreground mb-2 flex items-center gap-2">
-                    <Flame className="w-3 h-3" />
-                    Heatmap Mode
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {HEATMAP_MODES.map((mode) => (
-                      <Button
-                        key={mode.key}
-                        size="sm"
-                        variant={heatmapMode === mode.key ? "saudi" : "saudi-outline"}
-                        className="text-[10px] h-7 px-2"
-                        onClick={() => {
-                          setHeatmapMode(mode.key);
-                          setLayers(s => ({ ...s, heatmap: mode.key !== "off" }));
-                        }}
-                      >
-                        {mode.label}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-              )}
 
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 {[
@@ -467,47 +305,48 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
               </div>
 
               <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-muted-foreground">
-                <Badge variant="outline">{filteredDeposits.length} deposits</Badge>
-                <Badge variant="outline">{filteredTenders.length} tenders</Badge>
-                {layers.heatmap && heatmapMode !== "off" ? (
-                  <Badge variant="saudi" className="gap-1">
-                    <Flame className="w-3 h-3" />
-                    {heatmapMode === "deposits" ? "Density" : heatmapMode}
-                  </Badge>
-                ) : null}
-                {filters.region !== "all" ? <Badge variant="gold">{filters.region}</Badge> : null}
-              </div>
-
-              {/* SGS Data Source Toggle */}
-              <div className="mt-2 border-t border-white/10 pt-2">
-                <Button
-                  size="sm"
-                  variant={showDataSource ? "saudi" : "saudi-outline"}
-                  className="w-full text-[10px] h-7 gap-1"
-                  onClick={() => setShowDataSource(v => !v)}
-                >
-                  <Info className="w-3 h-3" />
-                  {showDataSource ? "Hide" : "Show"} SGS Data Source
-                </Button>
+                <Badge variant="outline">{cellsData?.features.length || 0} cells</Badge>
+                <Badge variant="outline">{geologyData?.features.length || 0} geology units</Badge>
+                <Badge variant="outline">{mineralsData?.features.length || 0} minerals</Badge>
               </div>
             </Card>
-
-            {/* SGS Data Panel */}
-            {showDataSource && (
-              <SGSDataPanel className="mt-2 w-[280px] md:w-[320px] bg-black/80 backdrop-blur border-white/10" />
-            )}
           </TooltipProvider>
         </div>
       </div>
 
-      {/* Bottom-left compact legend */}
+      {/* Bottom-left legend */}
       <div className="absolute z-[950] left-3 bottom-3 pointer-events-none">
         <div className="pointer-events-auto">
-          <MapLegend 
-            visibleLayers={layers} 
-            heatmapMode={heatmapMode}
-            className="w-[220px]" 
-          />
+          <Card className="p-3 bg-black/80 backdrop-blur border-white/10 w-[240px]">
+            <div className="text-xs font-medium text-white mb-2">Prospectivity Score</div>
+            <div className="space-y-1">
+              {[
+                { label: "Very High (80-100%)", color: "#dc2626" },
+                { label: "High (60-80%)", color: "#fb9200" },
+                { label: "Medium (40-60%)", color: "#eab300" },
+                { label: "Low (20-40%)", color: "#84cc16" },
+                { label: "Very Low (0-20%)", color: "#22c55e" },
+              ].map((item) => (
+                <div key={item.label} className="flex items-center gap-2">
+                  <div
+                    className="w-4 h-4 rounded border border-white/20"
+                    style={{ backgroundColor: item.color }}
+                  />
+                  <span className="text-[10px] text-white/80">{item.label}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 pt-2 border-t border-white/10">
+              <div className="flex items-center gap-2 mb-1">
+                <Mountain className="w-3 h-3 text-white/60" />
+                <span className="text-[10px] text-white/80">Geology Units</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-3 h-3 text-[#D4AF37]" />
+                <span className="text-[10px] text-white/80">Mineral Occurrences</span>
+              </div>
+            </div>
+          </Card>
         </div>
       </div>
 
@@ -518,8 +357,8 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
         style={{ height: isFullscreen ? undefined : height }}
       >
         <MapContainer
-          center={SAUDI_CENTER}
-          zoom={5}
+          center={MAP_CENTER}
+          zoom={DEFAULT_ZOOM}
           zoomControl={false}
           scrollWheelZoom
           style={{ height: "100%", width: "100%" }}
@@ -527,99 +366,151 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
         >
           <TileLayer url={tile.url} attribution={tile.attribution} />
           <ZoomControl position="bottomright" />
-          <MapZoomController region={filters.region} />
 
-          {/* Saudi outline highlight */}
-          <Polygon
-            positions={SAUDI_OUTLINE}
-            pathOptions={{
-              color: "#22c55e",
-              weight: 2,
-              opacity: 0.7,
-              fill: true,
-              fillColor: "#22c55e",
-              fillOpacity: 0.06,
-              dashArray: "6 6",
-            }}
-          />
-
-          {/* KSA Administrative Regions */}
-          {layers.regions ? (
-            <KSARegionsOverlay
-              geojson={saudiRegionsGeoJSON}
-              showLabels={true}
-              showCapitals={true}
-              interactive={true}
-              selectedRegion={filters.region !== "all" ? filters.region.toLowerCase().replace(/ /g, "-") : null}
-              onRegionClick={(region) => {
-                // Convert region id back to SaudiRegion format
-                const regionName = region.name as SaudiRegion;
-                setFilters((f) => ({ ...f, region: regionName }));
+          {/* Geology Layer */}
+          {layers.geology && geologyData && (
+            <GeoJSON
+              key="geology"
+              data={geologyData}
+              style={() => ({
+                fillColor: "#8B7355",
+                fillOpacity: 0.3,
+                color: "#6B5744",
+                weight: 1,
+              })}
+              onEachFeature={(feature, layer) => {
+                const props = feature.properties as GeologyProperties;
+                layer.bindPopup(`
+                  <div class="p-2">
+                    <div class="font-semibold">${props.lithology}</div>
+                    <div class="text-xs text-gray-600">Unit: ${props.unit_code}</div>
+                    <div class="text-xs text-gray-600">Age: ${props.age}</div>
+                  </div>
+                `);
               }}
             />
-          ) : null}
+          )}
 
-          {/* Terranes */}
-          {layers.terranes ? (
-            <LayerGroup>
-              <TerraneOverlay geojson={terraneBoundaries} />
-            </LayerGroup>
-          ) : null}
-
-          {/* Heatmap Layer */}
-          {layers.heatmap && heatmapData.length > 0 ? (
-            <HeatmapLayer
-              points={heatmapData}
-              radius={30}
-              blur={20}
-              max={1.0}
-              minOpacity={0.4}
-              gradient={currentHeatmapGradient}
+          {/* Faults Layer */}
+          {layers.faults && faultsData && (
+            <GeoJSON
+              key="faults"
+              data={faultsData}
+              style={() => ({
+                color: "#EF4444",
+                weight: 2,
+                opacity: 0.8,
+              })}
+              onEachFeature={(feature, layer) => {
+                const props = feature.properties as FaultProperties;
+                layer.bindPopup(`
+                  <div class="p-2">
+                    <div class="font-semibold">Fault/Contact</div>
+                    <div class="text-xs text-gray-600">Type: ${props.fault_type}</div>
+                  </div>
+                `);
+              }}
             />
-          ) : null}
+          )}
 
-          {/* Infrastructure */}
-          {layers.infrastructure ? (
+          {/* Dikes Layer */}
+          {layers.dikes && dikesData && (
+            <GeoJSON
+              key="dikes"
+              data={dikesData}
+              style={() => ({
+                color: "#7C3AED",
+                weight: 2,
+                opacity: 0.8,
+                dashArray: "5, 5",
+              })}
+              onEachFeature={(feature, layer) => {
+                const props = feature.properties as DikeProperties;
+                layer.bindPopup(`
+                  <div class="p-2">
+                    <div class="font-semibold">Dike</div>
+                    <div class="text-xs text-gray-600">Type: ${props.dike_type}</div>
+                    <div class="text-xs text-gray-600">Composition: ${props.composition}</div>
+                  </div>
+                `);
+              }}
+            />
+          )}
+
+          {/* Prospectivity Grid Cells */}
+          {layers.cells && cellsData && (
+            <GeoJSON
+              key="cells"
+              data={cellsData}
+              style={(feature) => {
+                const props = feature?.properties as CellProperties;
+                return {
+                  fillColor: getScoreColor(props.score),
+                  fillOpacity: getScoreOpacity(props.score),
+                  color: getScoreColor(props.score),
+                  weight: 1,
+                  opacity: 0.6,
+                };
+              }}
+              onEachFeature={(feature, layer) => {
+                const props = feature.properties as CellProperties;
+
+                // Create popup container
+                const popupDiv = document.createElement("div");
+
+                // Render React component to string (simplified approach)
+                // In production, you'd use ReactDOM.render or a portal
+                layer.bindPopup(popupDiv, { 
+                  maxWidth: 350,
+                  className: "custom-cell-popup"
+                });
+
+                layer.on("popupopen", () => {
+                  // Dynamically import and render the popup component
+                  import("react-dom/client").then(({ createRoot }) => {
+                    const root = createRoot(popupDiv);
+                    root.render(<CellDetailsPopup cell={props} />);
+                  });
+                });
+              }}
+            />
+          )}
+
+          {/* Mineral Occurrences */}
+          {layers.minerals && mineralsData && (
             <LayerGroup>
-              {infrastructure.map((i) => {
-                const coords =
-                  i.coordinates?.map((c) => [c.latitude, c.longitude] as [number, number]) || [];
-
-                if ((i.type === "road" || i.type === "rail") && coords.length >= 2) {
-                  return (
-                    <Polyline
-                      key={i.id}
-                      positions={coords}
-                      pathOptions={{
-                        color: i.type === "rail" ? "#7C3AED" : "#334155",
-                        weight: i.type === "rail" ? 4 : 3,
-                        opacity: 0.8,
-                        dashArray: i.type === "rail" ? "6 6" : undefined,
-                      }}
-                    />
-                  );
-                }
-
-                const point: [number, number] =
-                  coords[0] || [i.location.latitude, i.location.longitude];
-
-                const iconColor =
-                  i.type === "port" ? "#0EA5E9" : i.type === "airport" ? "#F97316" : "#006C35";
+              {mineralsData.features.map((feature) => {
+                const props = feature.properties as MineralOccurrenceProperties;
+                const coords = feature.geometry.coordinates as [number, number];
 
                 return (
-                  <Marker key={i.id} position={point} icon={createInfrastructureIcon(L, iconColor)}>
-                    <Popup>
-                      <Card className="border-0 shadow-none w-[260px]">
-                        <div className="p-3 space-y-1">
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="font-semibold">{i.name}</div>
-                            <Badge variant="outline" className="capitalize">
-                              {i.type}
-                            </Badge>
+                  <Marker
+                    key={feature.id}
+                    position={[coords[1], coords[0]]} // GeoJSON is [lng, lat], Leaflet is [lat, lng]
+                    icon={createMineralIcon(L)}
+                  >
+                    <Popup className="custom-mineral-popup">
+                      <Card className="border-0 shadow-none w-[280px]">
+                        <div className="p-3 space-y-2">
+                          <div>
+                            <div className="font-semibold text-base">{props.name}</div>
+                            <Badge variant="gold" className="mt-1">{props.commodity}</Badge>
                           </div>
-                          <div className="text-xs text-muted-foreground">
-                            {i.location.region} • {i.status}
+                          <div className="space-y-1 text-sm">
+                            <div className="flex justify-between">
+                              <span className="text-muted-foreground">Deposit Type:</span>
+                              <span className="font-medium">{props.deposit_type}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-muted-foreground">Status:</span>
+                              <span className="font-medium capitalize">{props.status}</span>
+                            </div>
                           </div>
+                          {props.description && (
+                            <div className="text-xs text-muted-foreground pt-2 border-t">
+                              {props.description}
+                            </div>
+                          )}
                         </div>
                       </Card>
                     </Popup>
@@ -627,57 +518,9 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
                 );
               })}
             </LayerGroup>
-          ) : null}
-
-          {/* Deposits (clustered) */}
-          {layers.deposits ? (
-            <MarkerClusterGroup chunkedLoading>
-              {filteredDeposits.map((d) => {
-                const icon = createDepositIcon(L, commodityColor(d.commodities));
-                const entity: PopupEntity = { kind: "deposit", data: d as MineralDeposit };
-                return (
-                  <Marker
-                    key={d.id}
-                    position={[d.location.latitude, d.location.longitude]}
-                    icon={icon}
-                  >
-                    <Popup>
-                      <DepositPopup entity={entity} />
-                    </Popup>
-                  </Marker>
-                );
-              })}
-            </MarkerClusterGroup>
-          ) : null}
-
-          {/* Tenders (clustered) */}
-          {layers.tenders ? (
-            <MarkerClusterGroup chunkedLoading>
-              {filteredTenders
-                .filter((t) => !!t.coordinates)
-                .map((t) => {
-                  const color = tenderColor(t.status);
-                  const animate = t.status === "open";
-                  const icon = createTenderIcon(L, color, animate);
-                  const entity: PopupEntity = { kind: "tender", data: t as TenderRound };
-                  return (
-                    <Marker
-                      key={t.id}
-                      position={[t.coordinates!.latitude, t.coordinates!.longitude]}
-                      icon={icon}
-                    >
-                      <Popup>
-                        <DepositPopup entity={entity} />
-                      </Popup>
-                    </Marker>
-                  );
-                })}
-            </MarkerClusterGroup>
-          ) : null}
+          )}
         </MapContainer>
       </div>
     </div>
   );
 }
-
-

@@ -320,6 +320,36 @@
   animation: heatmapFadeIn 0.5s ease-out;
 }
 
+/* Hide navbar when map is in fullscreen mode */
+body.map-fullscreen header {
+  display: none !important;
+}
+
+/* Custom cell popup - hide default Leaflet popup styling */
+.custom-cell-popup .leaflet-popup-content-wrapper,
+.custom-mineral-popup .leaflet-popup-content-wrapper {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.custom-cell-popup .leaflet-popup-content,
+.custom-mineral-popup .leaflet-popup-content {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.custom-cell-popup .leaflet-popup-tip,
+.custom-mineral-popup .leaflet-popup-tip {
+  display: none !important;
+}
+
+.custom-cell-popup .leaflet-popup-close-button,
+.custom-mineral-popup .leaflet-popup-close-button {
+  display: none !important;
+}
+
 /* MarkerCluster customization */
 .marker-cluster-small {
   background-color: rgba(0, 108, 53, 0.3) !important;
