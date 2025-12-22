@@ -1,0 +1,1135 @@
+{
+  "metadata": {
+    "title": "Geology & Mineral Resources of the Kingdom of Saudi Arabia",
+    "presenter": "Ralph Stagg",
+    "credentials": "BSc MSc DIC FAusIMM MIM3 C Eng",
+    "event": "SMEDG",
+    "date": "2024-06-13",
+    "sources": [
+      "Saudi Geological Survey",
+      "Saudi Arabia's Ministry of Industry and Mineral Resources",
+      "Barrick Gold Corporation",
+      "Ma'aden (and subsidiaries)",
+      "Al Masane Al Kobra Mining Company"
+    ],
+    "copyright": "Saint Gabriel Pty Ltd 2024"
+  },
+
+  "vision2030": {
+    "overview": {
+      "description": "Saudi Arabia's mining sector is growing rapidly under Vision 2030",
+      "goal": "Mining sector to become 3rd pillar of the Kingdom's economy",
+      "untappedMineralWealth": {
+        "value": 2.5,
+        "unit": "trillion USD"
+      },
+      "megaProjects": {
+        "count": 11,
+        "totalValue": {
+          "value": 1,
+          "unit": "trillion USD",
+          "timeline": "until 2030"
+        }
+      }
+    },
+    "gdpTargets": {
+      "increasePercentage": 175,
+      "targetValue": {
+        "sar": 176000000000,
+        "usd": 47000000000
+      }
+    },
+    "costAdvantages": [
+      "Low energy costs",
+      "Low labour costs"
+    ],
+    "financialIncentives": [
+      {
+        "name": "Exploration Enablement Program",
+        "abbreviation": "EEP"
+      },
+      {
+        "name": "Saudi Industrial Development Fund",
+        "abbreviation": "SIDF",
+        "benefit": "Co-funding up to 75% of capital expenditure (CAPEX)"
+      }
+    ],
+    "regulatoryFramework": {
+      "miningCode": "Modernized mining code aligning with global standards",
+      "licensing": "Streamlined, transparent licensing and permitting process",
+      "tenure": "Security of tenure assured",
+      "application": "Direct application for licenses on a first-come, first-served basis",
+      "foreignOwnership": "100% foreign direct ownership allowed"
+    }
+  },
+
+  "infrastructure": {
+    "roads": {
+      "length": 73000,
+      "unit": "km"
+    },
+    "seaports": {
+      "count": 10,
+      "purpose": "non-oil trade"
+    },
+    "airports": {
+      "count": 28
+    },
+    "railroads": {
+      "length": 4500,
+      "unit": "km"
+    },
+    "majorLocations": [
+      "Madina", "Yanbu", "KAEC", "Jeddah", "Jazan", "Riyadh",
+      "Makkah", "Hail", "Buraydah", "Ras Alkhair", "Jubail",
+      "Hofuf", "Abha", "Najran", "Turaif", "NEOM", "Dammam", "Taif"
+    ]
+  },
+
+  "geologicalSurveyAdvancements": {
+    "investment": {
+      "sar": 2700000000,
+      "usd": 720000000
+    },
+    "programs": [
+      {
+        "name": "National Geological Database",
+        "abbreviation": "NGD"
+      },
+      {
+        "name": "Geophysics/chem survey",
+        "coverage": "50% Arabian-shield completed"
+      },
+      {
+        "name": "Regional Geological Survey Program"
+      },
+      {
+        "name": "National Core Library",
+        "status": "digitised"
+      },
+      {
+        "name": "Accelerated Exploration Program"
+      },
+      {
+        "name": "Mining Centre of Excellence"
+      },
+      {
+        "name": "Geothermal energy exploration",
+        "abbreviation": "GTEE"
+      }
+    ]
+  },
+
+  "geology": {
+    "arabianShield": {
+      "description": "Arabian-Nubian Shield - East African Orogen - core of the end Precambrian Gondwana Super Continent",
+      "area": {
+        "total": 575000,
+        "unit": "km²"
+      },
+      "dimensions": {
+        "length": 1800,
+        "width": 700,
+        "unit": "km"
+      },
+      "harratsCoverage": {
+        "area": 81000,
+        "unit": "km²",
+        "description": "Cenozoic basaltic lava fields"
+      },
+      "geologicalAge": {
+        "timespan": 1200,
+        "unit": "million years"
+      },
+      "terraneAmalgamation": {
+        "start": 715,
+        "end": 630,
+        "unit": "Ma"
+      },
+      "graniticIntrusion": {
+        "start": 640,
+        "end": 550,
+        "unit": "Ma"
+      },
+      "miningHistory": {
+        "copperMining": {
+          "location": "Timna",
+          "age": 5000,
+          "unit": "years bp"
+        },
+        "goldMining": {
+          "location": "Mahd Adh Dhahab (Cradle of Gold)",
+          "age": {
+            "min": 3000,
+            "max": 5000,
+            "unit": "years bp"
+          }
+        }
+      }
+    },
+    "terranes": [
+      {
+        "name": "Midyan Terrane",
+        "location": "Northwest"
+      },
+      {
+        "name": "Hail Terrane",
+        "location": "North-central"
+      },
+      {
+        "name": "Ad Dawadimi Terrane",
+        "location": "Central-east"
+      },
+      {
+        "name": "Ar Rayn Terrane",
+        "location": "East"
+      },
+      {
+        "name": "Hijaz Terrane",
+        "location": "West-central"
+      },
+      {
+        "name": "Jiddah Terrane",
+        "location": "West"
+      },
+      {
+        "name": "Afif Terrane",
+        "location": "Central"
+      },
+      {
+        "name": "Asir Terrane",
+        "location": "Southwest"
+      }
+    ],
+    "geologicalUnits": [
+      {
+        "name": "Proterozoic Arabian Shield",
+        "description": "metamorphosed volcano-sedimentary successions intruded by granite & gabbro"
+      },
+      {
+        "name": "Phanerozoic Arabian Platform",
+        "description": "clastic, calcarite successions & evaporitic successions"
+      },
+      {
+        "name": "Tertiary Harrats",
+        "description": "extensive basalt plateaus"
+      },
+      {
+        "name": "Tertiary and Quaternary Red Sea Coastal Plain",
+        "description": "sedimentary rocks & coral reefs"
+      },
+      {
+        "name": "Quaternary units",
+        "description": "sand/gravel plains and wadi sediments"
+      }
+    ],
+    "sutureZones": [
+      "Yanbu suture zone",
+      "Bi'r Umq suture zone",
+      "Nabitah suture zone"
+    ],
+    "faultSystems": [
+      {
+        "name": "Najd Fault System",
+        "trend": "NW-trending",
+        "movement": "sinistral strike-slip"
+      }
+    ]
+  },
+
+  "minerals": {
+    "metallic": {
+      "baseMetals": ["Cu", "Zn", "Pb"],
+      "preciousMetals": ["Au", "Ag", "PGM"],
+      "ferrousMetals": ["Fe", "Ti"],
+      "otherMetals": ["Al", "Mg", "Sn", "Ta", "Nb", "REE", "Co", "Ni", "Cr"]
+    },
+    "nonMetallic": [
+      "Phosphate",
+      "Lime",
+      "Dolomite",
+      "Limestone",
+      "Gypsum",
+      "Kaolin",
+      "Silica sand",
+      "Glass sand",
+      "Salt",
+      "Pozzolana",
+      "Magnesite"
+    ]
+  },
+
+  "goldDeposits": {
+    "overview": {
+      "historyYears": 5000,
+      "operatingMines": 7,
+      "production2023": {
+        "maaden": {
+          "value": 406903,
+          "unit": "oz"
+        },
+        "amak": {
+          "value": 26352,
+          "unit": "oz",
+          "mines": ["Al Masane", "Guyan"]
+        }
+      }
+    },
+    "maadenMines": [
+      {
+        "name": "Ad Duwayhi",
+        "type": ["Open Cut", "CIL"]
+      },
+      {
+        "name": "Al Amar",
+        "type": ["Underground", "Dore"],
+        "byproducts": ["Cu concentrate", "Zn concentrate"]
+      },
+      {
+        "name": "Bulgah",
+        "type": ["Open Cut", "CIL", "Heap Leach"]
+      },
+      {
+        "name": "Sukhaybarat",
+        "type": ["Open Cut", "CIL", "Heap Leach"]
+      },
+      {
+        "name": "As Suq",
+        "type": ["Open Cut", "Heap Leach"]
+      },
+      {
+        "name": "Mahd Ad Dhahab",
+        "type": ["Underground", "CIL", "Dore"],
+        "byproducts": ["Cu concentrate", "Ag concentrate"]
+      },
+      {
+        "name": "Mansourah and Massarah",
+        "type": ["Open Cut", "CIL", "POX"]
+      }
+    ],
+    "depositTypes": [
+      {
+        "type": "Mesothermal",
+        "description": "Dominant gold-deposit type by number of deposits"
+      },
+      {
+        "type": "Epithermal",
+        "description": "Hosted in continental margin volcanic arcs in central and eastern shield",
+        "examples": ["Al Amar"]
+      },
+      {
+        "type": "VMS",
+        "description": "Cu, Zn, (Pb), Au and Ag in submarine volcanic centres of oceanic-island arc or back-arc origins"
+      }
+    ],
+    "hostRocks": [
+      "Mafic to Felsic Volcanic and volcaniclastic rocks",
+      "Diorite, granodiorite and granite plutons",
+      "Dikes, veins and shear zones"
+    ]
+  },
+
+  "copperDeposits": {
+    "overview": {
+      "miningHistory": 3000,
+      "unit": "years bp"
+    },
+    "jabalSayid": {
+      "ownership": {
+        "barrickGold": 50,
+        "maaden": 50
+      },
+      "production2023": {
+        "copper": {
+          "value": 70158,
+          "unit": "tonnes"
+        }
+      },
+      "byproducts": ["Zn", "Ag", "Au"],
+      "hostRocks": "volcanic rocks"
+    },
+    "otherDeposits": [
+      {
+        "name": "Kutam",
+        "status": "Known resources"
+      },
+      {
+        "name": "Jabal Ash Shizm",
+        "status": "Known resources"
+      },
+      {
+        "name": "Umm Ad Damar",
+        "owner": "Barrick 100%",
+        "status": "Exploration - Framework drill program confirms copper rich VMS systems"
+      }
+    ],
+    "processing": "No Zn or Cu smelting and refining - concentrates exported"
+  },
+
+  "zincDeposits": {
+    "overview": {
+      "hostRocks": "volcano-sedimentary rocks in volcanic-arc terranes"
+    },
+    "production": {
+      "mahdAdhDhahab": {
+        "byproduct": true,
+        "value": 3000,
+        "unit": "tonnes Zn pa"
+      },
+      "alMasane2023": {
+        "zincConcentrate": {
+          "value": 45700,
+          "unit": "tonnes"
+        },
+        "copperConcentrate": {
+          "value": 19505,
+          "unit": "tonnes"
+        },
+        "silver": {
+          "value": 75509,
+          "unit": "oz"
+        },
+        "gold": {
+          "value": 5343,
+          "unit": "oz"
+        }
+      }
+    },
+    "depositsWithResources": ["Al Amar", "Khnaiguiyah", "Kutam", "Baydan"],
+    "specialDeposits": [
+      {
+        "name": "Jabal Dhaylan",
+        "type": "Pb-Zn oxide mineralisation",
+        "hostRock": "reef limestone",
+        "location": "Tertiary coastal plain"
+      },
+      {
+        "name": "Atlantis II Deep",
+        "location": "Red Sea midway between Saudi Arabia and Sudan",
+        "age": "Holocene",
+        "type": "mineralised mud",
+        "resource": {
+          "tonnage": 89.5,
+          "unit": "Mt",
+          "grades": {
+            "zinc": 2.06,
+            "copper": 0.45,
+            "silver": 38.4
+          },
+          "gradeUnits": {
+            "zinc": "%",
+            "copper": "%",
+            "silver": "g/t"
+          }
+        }
+      }
+    ]
+  },
+
+  "aluminiumOperations": {
+    "deposits": ["Az Zabirah", "Al Ba'itha"],
+    "jointVenture": {
+      "partner": "Alcoa",
+      "year": 2009,
+      "capex": {
+        "value": 10.8,
+        "unit": "billion USD"
+      }
+    },
+    "bauxiteMine": {
+      "location": "Al Ba'itha",
+      "production": {
+        "value": 5,
+        "unit": "Mtpa dry weight bauxite"
+      },
+      "railDistance": {
+        "value": 1200,
+        "unit": "km"
+      },
+      "destination": "Ras Al Khair Industrial City"
+    },
+    "refinery": {
+      "alumina_production": {
+        "value": 1.8,
+        "unit": "Mtpa"
+      },
+      "smelterProcessing": "80%"
+    },
+    "smelter": {
+      "potlines": 2,
+      "potlineLength": {
+        "value": 1.2,
+        "unit": "km"
+      },
+      "production": {
+        "value": 780000,
+        "unit": "tpa aluminium"
+      }
+    },
+    "power": {
+      "capacity": {
+        "value": 2.4,
+        "unit": "GW"
+      },
+      "source": "gas-fired generation",
+      "desalination": true
+    },
+    "casthouse": {
+      "capacity": {
+        "value": 1.2,
+        "unit": "Mtpa"
+      },
+      "products": ["standard ingot", "extrusions billet", "T-Bar", "rolling slab"]
+    },
+    "valueChain": "Fully integrated Al value chain"
+  },
+
+  "rareEarthsAndOtherMetals": {
+    "ghurayyahDeposit": {
+      "tonnage": {
+        "value": 400,
+        "unit": "Mt"
+      },
+      "grades": {
+        "niobium": {
+          "value": 2250,
+          "unit": "ppm"
+        },
+        "tantalum": {
+          "value": 212,
+          "unit": "ppm"
+        },
+        "tin": {
+          "value": 290,
+          "unit": "ppm"
+        },
+        "thorium": {
+          "value": 390,
+          "unit": "ppm"
+        },
+        "uranium": {
+          "value": 117,
+          "unit": "ppm"
+        }
+      },
+      "hostRock": "alkali, felspar porphyritic granite"
+    },
+    "mineralizationTypes": [
+      {
+        "type": "Ta (Sn-W)",
+        "association": "peraluminous post-collisional granite"
+      },
+      {
+        "type": "REE-Th-U",
+        "association": "(syeno) granites"
+      },
+      {
+        "type": "Cr-Ti-Fe-Ni-Cu-Co (PGE)",
+        "association": "mafic-ultramafic rocks"
+      }
+    ]
+  },
+
+  "ironTitaniumMagnesium": {
+    "iron": {
+      "deposits": [
+        {
+          "name": "Al Aflaj",
+          "type": "oolitic ironstone"
+        },
+        {
+          "name": "Wadi Fatima",
+          "type": "oolitic ironstone"
+        },
+        {
+          "name": "Wadi Sawawin",
+          "type": "BIF"
+        },
+        {
+          "name": "Jabal Idsas",
+          "type": "disseminated magnetite"
+        }
+      ],
+      "pyriteDeposits": [
+        {
+          "name": "Wadi Wassat",
+          "type": "Pyrite"
+        },
+        {
+          "name": "Wadi Qatan",
+          "type": "Nickeliferous Pyrite"
+        }
+      ],
+      "steelOutput": {
+        "min": 12,
+        "max": 13,
+        "unit": "Mtpa"
+      },
+      "localMining": false
+    },
+    "titanium": {
+      "lakhathalDeposit": {
+        "tonnage": {
+          "value": 175,
+          "unit": "Mt"
+        },
+        "grade": {
+          "value": 6.2,
+          "unit": "% TiO2"
+        },
+        "depth": {
+          "value": 100,
+          "unit": "m"
+        }
+      },
+      "ilmeniteResources": {
+        "value": 191,
+        "unit": "Mt"
+      },
+      "production": {
+        "tiSlag": {
+          "value": 500,
+          "unit": "ktpa"
+        },
+        "tio2": {
+          "value": 140,
+          "unit": "ktpa"
+        },
+        "tiSponge": {
+          "value": 15,
+          "unit": "ktpa"
+        }
+      }
+    },
+    "magnesium": {
+      "mine": {
+        "name": "Al Ghazalah (Zargat)",
+        "type": "Magnesite"
+      },
+      "processing": {
+        "location": "Madinah Industrial City",
+        "equipment": "Multiple hearth furnace"
+      },
+      "production": {
+        "causticCalcineMagnesia": {
+          "value": 39000,
+          "unit": "tpa"
+        },
+        "products": ["dead burned magnesia", "monolithic refractories"]
+      }
+    }
+  },
+
+  "phosphateOperations": {
+    "jointVenture": {
+      "maadenShare": 70,
+      "investment": {
+        "value": 5.6,
+        "unit": "billion USD"
+      }
+    },
+    "mine": {
+      "name": "Al Jalamid",
+      "production": {
+        "value": 11.6,
+        "unit": "Mtpa"
+      }
+    },
+    "beneficiation": {
+      "output": {
+        "value": 5,
+        "unit": "Mtpa concentrated phosphate rock"
+      }
+    },
+    "transport": {
+      "method": "rail",
+      "distance": {
+        "value": 1200,
+        "unit": "km"
+      },
+      "destination": "Ras Al Khair"
+    },
+    "processingComplex": {
+      "name": "Integrated Fertilizer Production Complex",
+      "facilities": [
+        "Phosphoric Acid Plant",
+        "Sulfuric Acid Plant",
+        "Ammonia Plant",
+        "Di-Ammonium Phosphate Granulation Plant",
+        "Desalination Plant"
+      ]
+    },
+    "fertilizerProduction": {
+      "value": 3,
+      "unit": "Mtpa",
+      "products": ["DAP", "MAP", "Nitro Phosphate", "NPK", "NPKS"]
+    }
+  },
+
+  "industrialMinerals": {
+    "gypsum": {
+      "source": "Miocene gypsum anhydrite deposits of Red Sea Coast",
+      "companies": 10,
+      "majorPlayers": ["Knauff", "San Gobain"]
+    },
+    "limestone": {
+      "cementProduction": {
+        "value": 55,
+        "unit": "Mt/year"
+      },
+      "cementPlants": 25,
+      "sources": ["sedimentary monocline", "paleocoral beaches along Red Sea Coast"],
+      "whiteFillerLocations": ["North of Jeddah", "Jurassic cliffs near Riyadh"]
+    },
+    "pozzolana": {
+      "source": "ash in volcanic cones in the Harrats"
+    },
+    "silicaSand": {
+      "resources": "Huge resources",
+      "uses": ["glass sand", "sodium silicate manufacture"]
+    },
+    "kaolin": {
+      "source": "Az Zabirah bauxite mine",
+      "grade": "High grade"
+    },
+    "dimensionStone": {
+      "companies": 21,
+      "licenses": 40,
+      "trade": "Exporter and importer"
+    },
+    "salt": {
+      "production": {
+        "value": 2,
+        "unit": "Mtpa"
+      },
+      "exports": "compounds related to petrochemical industry"
+    }
+  },
+
+  "waterResources": {
+    "naturalWater": {
+      "permanentRivers": false,
+      "permanentLakes": false
+    },
+    "desalination": {
+      "stations": 27,
+      "dailyProduction": {
+        "value": 3,
+        "unit": "Mm³/day"
+      }
+    },
+    "groundwater": {
+      "types": [
+        {
+          "name": "Deep fossil aquifers",
+          "renewable": false
+        },
+        {
+          "name": "Shallow alluvial aquifers",
+          "renewable": true
+        }
+      ],
+      "location": "Phanerozoic Arabian Platform",
+      "primaryUse": "agriculture"
+    },
+    "rainfall": {
+      "min": 50,
+      "max": 100,
+      "unit": "mm/year"
+    },
+    "evaporation": {
+      "winter": {
+        "value": 6,
+        "unit": "mm/day"
+      },
+      "summer": {
+        "value": 20,
+        "unit": "mm/day"
+      }
+    },
+    "surfaceWater": {
+      "dams": {
+        "count": 200,
+        "collection": {
+          "value": 16,
+          "unit": "Bn ft³/annum"
+        }
+      },
+      "primaryUse": "agriculture"
+    },
+    "recycledWater": {
+      "target": 40,
+      "unit": "%",
+      "use": "irrigation"
+    }
+  },
+
+  "investmentRankings": {
+    "source": "World Risk Report 2023 by Mining Journal Intelligence MineHutte",
+    "rankings": [
+      {
+        "category": "Investment Hub Growth",
+        "ranking": "Fastest growing globally in past 5 years"
+      },
+      {
+        "category": "Fiscal Risk Mitigation",
+        "ranking": "Top 10 countries worldwide"
+      },
+      {
+        "category": "Permitting Index",
+        "ranking": "Second highest globally"
+      },
+      {
+        "category": "Mining Jurisdiction",
+        "ranking": "Top-tier for investment"
+      }
+    ]
+  },
+
+  "tenderRounds": {
+    "completed": [
+      {
+        "round": "Round 1, 2022",
+        "siteName": "Khnaiguiyah",
+        "commodities": ["Zn", "Cu"],
+        "region": "Riyadh",
+        "areaKm2": 353,
+        "awardedTo": ["Abiliti", "Moxico Resources"]
+      },
+      {
+        "round": "Round 2, 2023",
+        "siteName": "Umm Ad Damar",
+        "commodities": ["Cu", "Ag", "Zn"],
+        "region": "Madinah",
+        "areaKm2": 40,
+        "awardedTo": ["Ma'aden", "Barrick"]
+      },
+      {
+        "round": "Round 3, 2023",
+        "siteName": "Muhaddad",
+        "commodities": ["Cu", "Pb", "Zn", "Au"],
+        "region": "Asir",
+        "areaKm2": 15,
+        "awardedTo": ["Ma'aden"]
+      },
+      {
+        "round": "Round 3, 2023",
+        "siteName": "Ar Ridaniyah",
+        "commodities": ["Zn"],
+        "region": "Riyadh",
+        "areaKm2": 44,
+        "awardedTo": ["Ma'aden"]
+      },
+      {
+        "round": "Round 4, 2023",
+        "siteName": "Um Hadid",
+        "commodities": ["Ag", "Pb", "Zn", "Cu"],
+        "region": "Riyadh",
+        "areaKm2": 246,
+        "awardedTo": ["Sumou Holdings", "KuyaSilver"]
+      },
+      {
+        "round": "Round 4, 2023",
+        "siteName": "Bir Umq",
+        "commodities": ["Cu", "Zn"],
+        "region": "Madinah",
+        "areaKm2": 187,
+        "awardedTo": ["Ajlan & Bros Holding Group", "Norinco"]
+      },
+      {
+        "round": "Round 4, 2023",
+        "siteName": "Jabal Shabiah",
+        "commodities": ["Zn", "Pb", "Cu", "Fe"],
+        "region": "Asir",
+        "areaKm2": 283,
+        "awardedTo": ["MSB", "Royal Road"]
+      }
+    ],
+    "round5_2024_pending": [
+      {
+        "siteName": "Al Halahilah",
+        "commodities": ["Zn", "Cu", "Pb", "Au"],
+        "region": "Najran",
+        "areaKm2": 34.70
+      },
+      {
+        "siteName": "Jabal Qaran",
+        "commodities": ["Au", "Cu", "Zn", "Ag", "Pb"],
+        "region": "Najran",
+        "areaKm2": 57.72
+      },
+      {
+        "siteName": "Makman Hejab",
+        "commodities": ["Au", "Ag"],
+        "region": "Riyadh",
+        "areaKm2": 118.40
+      },
+      {
+        "siteName": "An Nimas",
+        "commodities": ["Au", "Cu", "Ag", "Zn", "Ni"],
+        "region": "Asir",
+        "areaKm2": 222.22
+      },
+      {
+        "siteName": "Almiyah Shaib Burayk",
+        "commodities": ["Cu", "Au", "Zn", "Pb", "Ag"],
+        "region": "Makkah",
+        "areaKm2": 234.44
+      },
+      {
+        "siteName": "Al Hajirah",
+        "commodities": ["Ag", "Cu", "Zn", "Pb", "Au"],
+        "region": "Asir",
+        "areaKm2": 274.00
+      }
+    ],
+    "round6_2024_proposed": {
+      "openDate": "2024-06-24",
+      "sites": [
+        {
+          "name": "Abraq Abbab",
+          "commodity": ["Au"],
+          "areaKm2": 189.66,
+          "region": "Afif"
+        },
+        {
+          "name": "Al Numrahniyah",
+          "commodity": ["Au", "Cu", "Ag"],
+          "areaKm2": 103.40,
+          "region": "Ar Riyadh"
+        },
+        {
+          "name": "Al-Khushbi",
+          "commodity": ["Au", "Cu", "Pb", "Zn"],
+          "areaKm2": 157.58,
+          "region": "Ar Riyadh"
+        },
+        {
+          "name": "Jabal Sabha",
+          "commodity": ["Ag", "Pb", "Zn", "REE"],
+          "areaKm2": 171.50,
+          "region": "Ar Riyadh"
+        },
+        {
+          "name": "Shaib Marqan",
+          "commodity": ["Au", "Ag", "Cu"],
+          "areaKm2": 91.81,
+          "region": "Riyadh"
+        },
+        {
+          "name": "Umm Qusur",
+          "commodity": ["Au", "Ag", "Pb", "Zn"],
+          "areaKm2": 20.00,
+          "region": "Riyadh"
+        },
+        {
+          "name": "Wadi Ad Dawsh (Al Farah)",
+          "commodity": ["Au", "Ag", "Cu"],
+          "areaKm2": 157.76,
+          "region": "Asir"
+        },
+        {
+          "name": "Wadi Al Junah",
+          "commodity": ["Ag", "Cu", "Zn", "Au"],
+          "areaKm2": 425.37,
+          "region": "Asir"
+        },
+        {
+          "name": "Wadi Khyam",
+          "commodity": ["Au", "Zn"],
+          "areaKm2": 91.94,
+          "region": "Ar Riyadh"
+        }
+      ],
+      "beltExplorationLicensing": [
+        {
+          "belt": "Jabal Sayid",
+          "commodity": ["Cu", "Au"],
+          "areaKm2": 2892,
+          "region": "Jiddah Terrane"
+        },
+        {
+          "belt": "Al Hajar",
+          "commodity": ["Au", "Cu"],
+          "areaKm2": 1896,
+          "region": "Asir Terrane"
+        }
+      ]
+    }
+  },
+
+  "majorMinesAndDeposits": [
+    {
+      "name": "Al Khabra",
+      "type": "Phosphate",
+      "location": { "lat": 32, "region": "Northern" }
+    },
+    {
+      "name": "Umm Wu'al",
+      "type": "Phosphate",
+      "location": { "lat": 32, "region": "Northern" }
+    },
+    {
+      "name": "Al Jalamid",
+      "type": "Phosphate",
+      "location": { "lat": 32, "region": "Northern" }
+    },
+    {
+      "name": "Al Ghurrayah",
+      "type": "Nb/Ta",
+      "location": { "lat": 28, "region": "Central" }
+    },
+    {
+      "name": "Wadi Suywaywin",
+      "type": "Fe",
+      "location": { "lat": 28, "region": "Central" }
+    },
+    {
+      "name": "Al Zabirah",
+      "type": "Bauxite",
+      "location": { "lat": 28, "region": "Eastern" }
+    },
+    {
+      "name": "Al Ba'itha",
+      "type": "Bauxite",
+      "location": { "lat": 28, "region": "Eastern" }
+    },
+    {
+      "name": "Sukhaybarat",
+      "type": "Au",
+      "location": { "lat": 26, "region": "Central" }
+    },
+    {
+      "name": "Bulgah",
+      "type": "Au",
+      "location": { "lat": 26, "region": "Central" }
+    },
+    {
+      "name": "Wadi Khumal",
+      "type": "Cu/Au",
+      "location": { "lat": 25, "region": "Central" }
+    },
+    {
+      "name": "Jabal Sayid",
+      "type": "Cu/Zn/Au",
+      "location": { "lat": 24, "region": "Central" }
+    },
+    {
+      "name": "Mahd Ad Dhahab",
+      "type": "Au",
+      "location": { "lat": 24, "region": "Central" }
+    },
+    {
+      "name": "Al Amar",
+      "type": "Au",
+      "location": { "lat": 24, "region": "Eastern" }
+    },
+    {
+      "name": "Jabal Idsas",
+      "type": "Fe",
+      "location": { "lat": 24, "region": "Eastern" }
+    },
+    {
+      "name": "Bir Tawilah",
+      "type": "Au",
+      "location": { "lat": 23, "region": "Central" }
+    },
+    {
+      "name": "Massarah",
+      "type": "Au",
+      "location": { "lat": 23, "region": "Central" }
+    },
+    {
+      "name": "Ar Rujm",
+      "type": "Au",
+      "location": { "lat": 23, "region": "Central" }
+    },
+    {
+      "name": "Mansourah",
+      "type": "Au",
+      "location": { "lat": 23, "region": "Central" }
+    },
+    {
+      "name": "Ad Duwayhi",
+      "type": "Au",
+      "location": { "lat": 22, "region": "Central" }
+    },
+    {
+      "name": "Hawiah",
+      "type": "Cu/Au",
+      "location": { "lat": 22, "region": "Central" }
+    },
+    {
+      "name": "Jibal Qutman",
+      "type": "Au",
+      "location": { "lat": 20, "region": "Southern" }
+    },
+    {
+      "name": "Al Hajar",
+      "type": "Cu/Au",
+      "location": { "lat": 20, "region": "Southern" }
+    },
+    {
+      "name": "Hamdah",
+      "type": "Au",
+      "location": { "lat": 19, "region": "Southern" }
+    },
+    {
+      "name": "Al Masane",
+      "type": "Cu/Zn/Au",
+      "location": { "lat": 18, "region": "Southern" }
+    },
+    {
+      "name": "Guyan",
+      "type": "Au",
+      "location": { "lat": 18, "region": "Southern" }
+    },
+    {
+      "name": "Kutam",
+      "type": "Cu",
+      "location": { "lat": 18, "region": "Southern" }
+    }
+  ],
+
+  "keyCompanies": [
+    {
+      "name": "Ma'aden",
+      "fullName": "Saudi Arabian Mining Company",
+      "type": "State-owned",
+      "operations": ["Gold", "Copper", "Aluminium", "Phosphate", "Industrial Minerals"]
+    },
+    {
+      "name": "Barrick Gold Corporation",
+      "type": "International",
+      "operations": ["Copper (Jabal Sayid JV)"]
+    },
+    {
+      "name": "AMAK",
+      "fullName": "Al Masane Al Kobra Mining Company",
+      "type": "Private",
+      "operations": ["Gold", "Copper", "Zinc"]
+    },
+    {
+      "name": "Alcoa",
+      "type": "International JV Partner",
+      "operations": ["Aluminium (30% JV with Ma'aden)"]
+    }
+  ],
+
+  "contacts": {
+    "ministry": {
+      "name": "Ministry of Industry and Mineral Resources",
+      "website": "www.mim.gov.sa/en"
+    },
+    "presenter": {
+      "name": "Ralph Stagg",
+      "email": "ranist@proj-geo.com.au"
+    },
+    "saintGabriel": {
+      "company": "Saint Gabriel Pty Ltd",
+      "ceo": "Bernadette Sukkar",
+      "email": "bsukkar@saintgabriel.co",
+      "website": "www.saintgabriel.co"
+    }
+  }
+}
