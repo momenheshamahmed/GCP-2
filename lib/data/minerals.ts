@@ -15,13 +15,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "mahd-adhahab",
     name: "Mahd Ad'Dahab",
-    nameAr: "مهد الذهب",
+    nameAr: " ",
     type: "precious",
     location: {
       latitude: 23.4925,
       longitude: 40.8464,
       region: "Madinah",
-      regionAr: "المدينة المنورة",
+      regionAr: " ",
       city: "Mahd Ad'Dahab",
     },
     commodities: ["gold", "silver", "copper", "zinc"],
@@ -38,18 +38,18 @@ export const mineralDeposits: MineralDeposit[] = [
     status: "active",
     operator: "Ma'aden",
     description: "One of the oldest gold mining sites in the Arabian Peninsula, with documented mining activity dating back 3,000 years.",
-    descriptionAr: "من أقدم مواقع تعدين الذهب في شبه الجزيرة العربية، مع نشاط تعديني موثق يعود إلى 3000 عام.",
+    descriptionAr: "               3000 .",
   },
   {
     id: "sukhaybarat",
     name: "Sukhaybarat",
-    nameAr: "السخيبرات",
+    nameAr: "",
     type: "precious",
     location: {
       latitude: 25.1014,
       longitude: 42.3847,
       region: "Qassim",
-      regionAr: "القصيم",
+      regionAr: "",
     },
     commodities: ["gold", "silver"],
     production: {
@@ -65,18 +65,18 @@ export const mineralDeposits: MineralDeposit[] = [
     status: "active",
     operator: "Ma'aden",
     description: "Open-pit gold mine with heap leach processing facility.",
-    descriptionAr: "منجم ذهب مفتوح مع مرفق معالجة بالترشيح الكومي.",
+    descriptionAr: "       .",
   },
   {
     id: "bulghah",
     name: "Bulghah",
-    nameAr: "بلغة",
+    nameAr: "",
     type: "precious",
     location: {
       latitude: 24.8742,
       longitude: 42.2614,
       region: "Qassim",
-      regionAr: "القصيم",
+      regionAr: "",
     },
     commodities: ["gold"],
     production: {
@@ -96,13 +96,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "al-amar",
     name: "Al-Amar",
-    nameAr: "العمار",
+    nameAr: "",
     type: "precious",
     location: {
       latitude: 22.9378,
       longitude: 44.2956,
       region: "Riyadh",
-      regionAr: "الرياض",
+      regionAr: "",
     },
     commodities: ["gold", "silver", "copper", "zinc"],
     production: {
@@ -122,13 +122,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "ad-duwayhi",
     name: "Ad-Duwayhi",
-    nameAr: "الدويحي",
+    nameAr: "",
     type: "precious",
     location: {
       latitude: 22.5647,
       longitude: 43.4289,
       region: "Makkah",
-      regionAr: "مكة المكرمة",
+      regionAr: " ",
     },
     commodities: ["gold", "silver"],
     production: {
@@ -144,18 +144,18 @@ export const mineralDeposits: MineralDeposit[] = [
     status: "active",
     operator: "Ma'aden",
     description: "Largest gold mine in Saudi Arabia with state-of-the-art processing facility.",
-    descriptionAr: "أكبر منجم ذهب في المملكة العربية السعودية مع مرفق معالجة حديث.",
+    descriptionAr: "          .",
   },
   {
     id: "mansourah-massarah",
     name: "Mansourah-Massarah",
-    nameAr: "منصورة-مسرة",
+    nameAr: "-",
     type: "precious",
     location: {
       latitude: 21.9283,
       longitude: 43.0917,
       region: "Makkah",
-      regionAr: "مكة المكرمة",
+      regionAr: " ",
     },
     commodities: ["gold", "copper"],
     reserves: {
@@ -171,13 +171,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "as-suq",
     name: "As Suq",
-    nameAr: "الصوق",
+    nameAr: "",
     type: "precious",
     location: {
       latitude: 23.9847,
       longitude: 40.6284,
       region: "Madinah",
-      regionAr: "المدينة المنورة",
+      regionAr: " ",
     },
     commodities: ["gold", "copper"],
     reserves: {
@@ -192,13 +192,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "ar-rjum",
     name: "Ar Rjum",
-    nameAr: "الرجم",
+    nameAr: "",
     type: "precious",
     location: {
       latitude: 20.6847,
       longitude: 41.8542,
       region: "Asir",
-      regionAr: "عسير",
+      regionAr: "",
     },
     commodities: ["gold", "silver"],
     reserves: {
@@ -212,13 +212,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "umm-al-shalaheeb",
     name: "Umm Al Shalaheeb",
-    nameAr: "أم الشلاهيب",
+    nameAr: " ",
     type: "precious",
     location: {
       latitude: 24.2831,
       longitude: 41.3275,
       region: "Madinah",
-      regionAr: "المدينة المنورة",
+      regionAr: " ",
     },
     commodities: ["gold"],
     status: "exploration",
@@ -229,13 +229,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "jabal-sayid",
     name: "Jabal Sayid",
-    nameAr: "جبل صايد",
+    nameAr: " ",
     type: "base",
     location: {
       latitude: 23.0142,
       longitude: 40.8475,
       region: "Madinah",
-      regionAr: "المدينة المنورة",
+      regionAr: " ",
     },
     commodities: ["copper", "zinc", "gold", "silver"],
     production: {
@@ -256,13 +256,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "khnaiguiyah",
     name: "Khnaiguiyah",
-    nameAr: "خنيقية",
+    nameAr: "",
     type: "base",
     location: {
       latitude: 23.5614,
       longitude: 44.2789,
       region: "Riyadh",
-      regionAr: "الرياض",
+      regionAr: "",
     },
     commodities: ["zinc", "copper", "lead"],
     reserves: {
@@ -278,13 +278,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "wadi-bidah",
     name: "Wadi Bidah",
-    nameAr: "وادي بيضه",
+    nameAr: " ",
     type: "base",
     location: {
       latitude: 20.1847,
       longitude: 41.2564,
       region: "Makkah",
-      regionAr: "مكة المكرمة",
+      regionAr: " ",
     },
     commodities: ["copper", "gold"],
     reserves: {
@@ -298,13 +298,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "nuqrah",
     name: "Nuqrah",
-    nameAr: "نقرة",
+    nameAr: "",
     type: "base",
     location: {
       latitude: 26.3147,
       longitude: 42.2178,
       region: "Hail",
-      regionAr: "حائل",
+      regionAr: "",
     },
     commodities: ["copper", "zinc"],
     reserves: {
@@ -318,68 +318,15 @@ export const mineralDeposits: MineralDeposit[] = [
 
   // Phosphate Deposits
   {
-    id: "waad-al-shamal",
-    name: "Wa'ad Al-Shamal",
-    nameAr: "وعد الشمال",
-    type: "industrial",
-    location: {
-      latitude: 31.6742,
-      longitude: 37.4875,
-      region: "Northern Borders",
-      regionAr: "الحدود الشمالية",
-    },
-    commodities: ["phosphate"],
-    production: {
-      annual: 11000000,
-      unit: "tonnes",
-      startYear: 2017,
-    },
-    reserves: {
-      proven: 1400000000,
-      probable: 600000000,
-      unit: "tonnes",
-    },
-    status: "active",
-    operator: "Ma'aden",
-    description: "World's largest integrated phosphate mining and fertilizer complex.",
-    descriptionAr: "أكبر مجمع متكامل لتعدين الفوسفات والأسمدة في العالم.",
-  },
-  {
-    id: "al-jalamid",
-    name: "Al-Jalamid",
-    nameAr: "الجلاميد",
-    type: "industrial",
-    location: {
-      latitude: 31.4214,
-      longitude: 37.2647,
-      region: "Northern Borders",
-      regionAr: "الحدود الشمالية",
-    },
-    commodities: ["phosphate"],
-    production: {
-      annual: 5000000,
-      unit: "tonnes",
-      startYear: 2011,
-    },
-    reserves: {
-      proven: 500000000,
-      probable: 200000000,
-      unit: "tonnes",
-    },
-    status: "active",
-    operator: "Ma'aden",
-    description: "Open-pit phosphate mine connected to processing facilities by railway.",
-  },
-  {
     id: "umm-wual",
     name: "Umm Wu'al",
-    nameAr: "أم وعل",
+    nameAr: " ",
     type: "industrial",
     location: {
       latitude: 30.8547,
       longitude: 37.9214,
       region: "Northern Borders",
-      regionAr: "الحدود الشمالية",
+      regionAr: " ",
     },
     commodities: ["phosphate"],
     reserves: {
@@ -396,13 +343,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "az-zabirah",
     name: "Az-Zabirah",
-    nameAr: "الزبيرة",
+    nameAr: "",
     type: "industrial",
     location: {
       latitude: 27.0914,
       longitude: 43.7614,
       region: "Qassim",
-      regionAr: "القصيم",
+      regionAr: "",
     },
     commodities: ["bauxite"],
     production: {
@@ -424,13 +371,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "jeddah-kaolin",
     name: "Jeddah Kaolin Deposit",
-    nameAr: "رواسب الكاولين بجدة",
+    nameAr: "  ",
     type: "industrial",
     location: {
       latitude: 21.5514,
       longitude: 39.1892,
       region: "Makkah",
-      regionAr: "مكة المكرمة",
+      regionAr: " ",
     },
     commodities: ["kaolin", "feldspar"],
     status: "exploration",
@@ -439,13 +386,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "tabuk-silica",
     name: "Tabuk Silica Sand",
-    nameAr: "رمال السيليكا تبوك",
+    nameAr: "  ",
     type: "industrial",
     location: {
       latitude: 28.3914,
       longitude: 36.5647,
       region: "Tabuk",
-      regionAr: "تبوك",
+      regionAr: "",
     },
     commodities: ["silica"],
     reserves: {
@@ -459,13 +406,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "jizan-magnesite",
     name: "Jizan Magnesite",
-    nameAr: "ماغنسيت جازان",
+    nameAr: " ",
     type: "industrial",
     location: {
       latitude: 16.8947,
       longitude: 42.5814,
       region: "Jazan",
-      regionAr: "جازان",
+      regionAr: "",
     },
     commodities: ["magnesite"],
     reserves: {
@@ -479,13 +426,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "harrat-basalt",
     name: "Harrat Basalt Fields",
-    nameAr: "حقول حرات البازلت",
+    nameAr: "  ",
     type: "construction",
     location: {
       latitude: 24.1547,
       longitude: 39.8247,
       region: "Madinah",
-      regionAr: "المدينة المنورة",
+      regionAr: " ",
     },
     commodities: ["granite"],
     status: "active",
@@ -494,13 +441,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "riyadh-limestone",
     name: "Riyadh Limestone Belt",
-    nameAr: "حزام الحجر الجيري بالرياض",
+    nameAr: "   ",
     type: "construction",
     location: {
       latitude: 24.6847,
       longitude: 46.7214,
       region: "Riyadh",
-      regionAr: "الرياض",
+      regionAr: "",
     },
     commodities: ["limestone"],
     reserves: {
@@ -516,13 +463,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "aban-al-ahmar",
     name: "Aban Al-Ahmar REE",
-    nameAr: "أبان الأحمر للعناصر الأرضية النادرة",
+    nameAr: "    ",
     type: "rare-earth",
     location: {
       latitude: 25.2214,
       longitude: 41.5147,
       region: "Qassim",
-      regionAr: "القصيم",
+      regionAr: "",
     },
     commodities: ["rare-earth", "tantalum", "niobium"],
     reserves: {
@@ -537,13 +484,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "jabal-tawlah-ree",
     name: "Jabal Tawlah REE",
-    nameAr: "جبل طولة للعناصر الأرضية النادرة",
+    nameAr: "    ",
     type: "rare-earth",
     location: {
       latitude: 22.1847,
       longitude: 45.3214,
       region: "Riyadh",
-      regionAr: "الرياض",
+      regionAr: "",
     },
     commodities: ["rare-earth", "uranium", "niobium"],
     reserves: {
@@ -557,13 +504,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "ghurayyah-ree",
     name: "Ghurayyah REE",
-    nameAr: "غرية للعناصر الأرضية النادرة",
+    nameAr: "   ",
     type: "rare-earth",
     location: {
       latitude: 27.5147,
       longitude: 36.2847,
       region: "Tabuk",
-      regionAr: "تبوك",
+      regionAr: "",
     },
     commodities: ["rare-earth", "tantalum", "niobium", "lithium"],
     reserves: {
@@ -579,13 +526,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "wadi-sawawin",
     name: "Wadi Sawawin",
-    nameAr: "وادي سواوين",
+    nameAr: " ",
     type: "base",
     location: {
       latitude: 28.0147,
       longitude: 35.4914,
       region: "Tabuk",
-      regionAr: "تبوك",
+      regionAr: "",
     },
     commodities: ["iron", "titanium"],
     reserves: {
@@ -599,13 +546,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "jabal-idsas-iron",
     name: "Jabal Idsas Iron",
-    nameAr: "حديد جبل إدساس",
+    nameAr: "  ",
     type: "base",
     location: {
       latitude: 28.4547,
       longitude: 35.8214,
       region: "Tabuk",
-      regionAr: "تبوك",
+      regionAr: "",
     },
     commodities: ["iron"],
     reserves: {
@@ -621,13 +568,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "jabal-al-wask-chromite",
     name: "Jabal Al Wask Chromite",
-    nameAr: "كروميت جبل الوسق",
+    nameAr: "  ",
     type: "base",
     location: {
       latitude: 25.2847,
       longitude: 42.1547,
       region: "Madinah",
-      regionAr: "المدينة المنورة",
+      regionAr: " ",
     },
     commodities: ["chromite", "nickel", "platinum"],
     reserves: {
@@ -641,13 +588,13 @@ export const mineralDeposits: MineralDeposit[] = [
   {
     id: "bir-umq-chromite",
     name: "Bir Umq Chromite",
-    nameAr: "كروميت بئر أمق",
+    nameAr: "  ",
     type: "base",
     location: {
       latitude: 23.4147,
       longitude: 40.2547,
       region: "Madinah",
-      regionAr: "المدينة المنورة",
+      regionAr: " ",
     },
     commodities: ["chromite", "nickel"],
     reserves: {

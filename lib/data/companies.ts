@@ -8,9 +8,9 @@ export const miningCompanies: Company[] = [
   {
     id: "maaden",
     name: "Ma'aden",
-    nameAr: "معادن",
+    nameAr: "",
     fullName: "Saudi Arabian Mining Company",
-    fullNameAr: "شركة التعدين العربية السعودية",
+    fullNameAr: "   ",
     type: "state-owned",
     operations: [
       { type: "mining", commodities: ["gold", "silver", "copper", "zinc"], startYear: 1997 },
@@ -31,7 +31,7 @@ export const miningCompanies: Company[] = [
     website: "https://www.maaden.com.sa",
     stockSymbol: "1211.SR",
     description: "Saudi Arabia's national mining champion and the largest multi-commodity mining and metals company in the Middle East.",
-    descriptionAr: "بطل التعدين الوطني في المملكة العربية السعودية وأكبر شركة تعدين ومعادن متعددة السلع في الشرق الأوسط.",
+    descriptionAr: "               .",
     licenses: [
       { id: "lic-maaden-1", type: "Mining", region: "Multiple Regions", expiry: "2050-12-31" },
       { id: "lic-maaden-2", type: "Processing", region: "Northern Borders", expiry: "2047-06-30" },
@@ -40,7 +40,7 @@ export const miningCompanies: Company[] = [
   {
     id: "maaden-barrick",
     name: "Ma'aden Barrick Copper Company",
-    nameAr: "شركة معادن باريك للنحاس",
+    nameAr: "   ",
     type: "joint-venture",
     operations: [
       { type: "mining", commodities: ["copper", "zinc", "gold", "silver"], location: "Jabal Sayid" },
@@ -55,12 +55,12 @@ export const miningCompanies: Company[] = [
     headquarters: "Riyadh",
     employees: 1200,
     description: "Joint venture operating the world-class Jabal Sayid copper mine.",
-    descriptionAr: "مشروع مشترك يدير منجم جبل صايد للنحاس ذو المستوى العالمي.",
+    descriptionAr: "         .",
   },
   {
     id: "maaden-mosaic",
     name: "Ma'aden Wa'ad Al-Shamal Phosphate Company",
-    nameAr: "شركة معادن وعد الشمال للفوسفات",
+    nameAr: "    ",
     type: "joint-venture",
     operations: [
       { type: "mining", commodities: ["phosphate"], location: "Wa'ad Al-Shamal" },
@@ -83,9 +83,9 @@ export const miningCompanies: Company[] = [
   {
     id: "amak",
     name: "AMAK",
-    nameAr: "أماك",
+    nameAr: "",
     fullName: "Al Masane Al Kobra Mining Company",
-    fullNameAr: "شركة المصانع الكبرى للتعدين",
+    fullNameAr: "   ",
     type: "private",
     operations: [
       { type: "mining", commodities: ["copper", "zinc", "gold", "silver"], location: "Al Masane" },
@@ -109,7 +109,7 @@ export const miningCompanies: Company[] = [
   {
     id: "ajlan-bros",
     name: "Ajlan & Bros Mining",
-    nameAr: "أجلان وإخوانه للتعدين",
+    nameAr: "  ",
     type: "private",
     operations: [
       { type: "exploration", commodities: ["gold", "copper"], location: "Arabian Shield" },
@@ -128,7 +128,7 @@ export const miningCompanies: Company[] = [
   {
     id: "ara-resources",
     name: "ARA Resources",
-    nameAr: "آرا للموارد",
+    nameAr: " ",
     type: "private",
     operations: [
       { type: "exploration", commodities: ["gold", "silver", "copper"], location: "Madinah Region" },
@@ -141,7 +141,7 @@ export const miningCompanies: Company[] = [
   {
     id: "bariq-mining",
     name: "Bariq Mining",
-    nameAr: "بارق للتعدين",
+    nameAr: " ",
     type: "private",
     operations: [
       { type: "exploration", commodities: ["copper", "zinc", "lead"], location: "Central Shield" },
@@ -156,7 +156,7 @@ export const miningCompanies: Company[] = [
   {
     id: "barrick-gold",
     name: "Barrick Gold",
-    nameAr: "باريك جولد",
+    nameAr: " ",
     fullName: "Barrick Gold Corporation",
     type: "international",
     operations: [
@@ -169,12 +169,12 @@ export const miningCompanies: Company[] = [
     website: "https://www.barrick.com",
     stockSymbol: "ABX",
     description: "Major international gold mining company with joint venture in Saudi Arabia.",
-    descriptionAr: "شركة تعدين ذهب دولية كبرى لديها مشروع مشترك في المملكة العربية السعودية.",
+    descriptionAr: "           .",
   },
   {
     id: "ivanhoe-electric",
     name: "Ivanhoe Electric",
-    nameAr: "إيفانهو إلكتريك",
+    nameAr: " ",
     type: "international",
     operations: [
       { type: "exploration", commodities: ["copper", "gold"], location: "Arabian Shield" },
@@ -188,7 +188,7 @@ export const miningCompanies: Company[] = [
   {
     id: "mosaic-company",
     name: "The Mosaic Company",
-    nameAr: "شركة موزاييك",
+    nameAr: " ",
     type: "international",
     operations: [
       { type: "processing", commodities: ["phosphate"], location: "Wa'ad Al-Shamal (JV)" },
@@ -205,7 +205,7 @@ export const miningCompanies: Company[] = [
   {
     id: "saudi-ceramic",
     name: "Saudi Ceramic Company",
-    nameAr: "الشركة السعودية للسيراميك",
+    nameAr: "  ",
     type: "private",
     operations: [
       { type: "mining", commodities: ["kaolin", "feldspar", "silica"], location: "Multiple" },
@@ -220,7 +220,7 @@ export const miningCompanies: Company[] = [
   {
     id: "red-sea-housing",
     name: "Red Sea Housing Services",
-    nameAr: "خدمات إسكان البحر الأحمر",
+    nameAr: "   ",
     type: "private",
     operations: [
       { type: "services", commodities: [], location: "Mining Sites" },
@@ -235,7 +235,7 @@ export const miningCompanies: Company[] = [
   {
     id: "mining-services-co",
     name: "Saudi Mining Services",
-    nameAr: "خدمات التعدين السعودية",
+    nameAr: "  ",
     type: "private",
     operations: [
       { type: "services", commodities: [], location: "Nationwide" },
@@ -248,7 +248,7 @@ export const miningCompanies: Company[] = [
   {
     id: "geo-survey-co",
     name: "Saudi Geological Services",
-    nameAr: "الخدمات الجيولوجية السعودية",
+    nameAr: "  ",
     type: "private",
     operations: [
       { type: "exploration", commodities: [], location: "Nationwide" },
@@ -263,7 +263,7 @@ export const miningCompanies: Company[] = [
   {
     id: "vision-mining",
     name: "Vision Mining Company",
-    nameAr: "شركة رؤية للتعدين",
+    nameAr: "  ",
     type: "private",
     operations: [
       { type: "exploration", commodities: ["copper", "gold", "silver"], location: "Asir Region" },
@@ -279,7 +279,7 @@ export const miningCompanies: Company[] = [
   {
     id: "neom-mining",
     name: "NEOM Mining Ventures",
-    nameAr: "مشاريع نيوم للتعدين",
+    nameAr: "  ",
     type: "subsidiary",
     operations: [
       { type: "exploration", commodities: ["copper", "gold", "rare-earth"], location: "NEOM Region" },
@@ -318,7 +318,7 @@ export const companyStats = {
 export const majorShareholders = [
   {
     name: "Public Investment Fund (PIF)",
-    nameAr: "صندوق الاستثمارات العامة",
+    nameAr: "  ",
     holdings: [
       { company: "Ma'aden", percentage: 65.44 },
     ],
@@ -326,7 +326,7 @@ export const majorShareholders = [
   },
   {
     name: "Barrick Gold Corporation",
-    nameAr: "شركة باريك جولد",
+    nameAr: "  ",
     holdings: [
       { company: "Ma'aden Barrick Copper Company", percentage: 50 },
     ],
@@ -334,7 +334,7 @@ export const majorShareholders = [
   },
   {
     name: "The Mosaic Company",
-    nameAr: "شركة موزاييك",
+    nameAr: " ",
     holdings: [
       { company: "Ma'aden Wa'ad Al-Shamal Phosphate Company", percentage: 25 },
     ],
@@ -342,7 +342,7 @@ export const majorShareholders = [
   },
   {
     name: "SABIC",
-    nameAr: "سابك",
+    nameAr: "",
     holdings: [
       { company: "Ma'aden Wa'ad Al-Shamal Phosphate Company", percentage: 15 },
     ],

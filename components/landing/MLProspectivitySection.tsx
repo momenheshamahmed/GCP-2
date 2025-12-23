@@ -28,40 +28,32 @@ const fadeUp = {
 interface MLCapability {
   icon: React.ElementType;
   title: string;
-  titleAr: string;
   description: string;
   techniques: string[];
-  accuracy?: string;
 }
 
 const mlCapabilities: MLCapability[] = [
   {
     icon: Target,
     title: "Mineral Prospectivity Mapping",
-    titleAr: "رسم خرائط احتمالية المعادن",
     description: "Machine learning models trained on geological, geochemical, and geophysical data to identify high-potential exploration targets.",
     techniques: ["Random Forest", "Gradient Boosting", "Neural Networks"],
-    accuracy: "87%",
   },
   {
     icon: Layers,
     title: "Multi-layer Data Fusion",
-    titleAr: "دمج البيانات متعددة الطبقات",
     description: "Integration of diverse data sources including satellite imagery, magnetic surveys, and structural geology for comprehensive analysis.",
     techniques: ["Feature Engineering", "PCA", "Spatial Analysis"],
   },
   {
     icon: TrendingUp,
     title: "Deposit Grade Prediction",
-    titleAr: "توقع درجة الرواسب",
     description: "Predictive models for estimating mineral grades and tonnage based on drilling data and geological parameters.",
     techniques: ["Regression Models", "Kriging", "3D Modeling"],
-    accuracy: "92%",
   },
   {
     icon: Network,
     title: "Pattern Recognition",
-    titleAr: "التعرف على الأنماط",
     description: "Identification of geological signatures and mineralization patterns across the Arabian Shield terranes.",
     techniques: ["Clustering", "Anomaly Detection", "Deep Learning"],
   },
@@ -71,7 +63,6 @@ const modelMetrics = [
   { label: "Training Samples", value: "12,500+", icon: BarChart3 },
   { label: "Features Analyzed", value: "45", icon: Layers },
   { label: "Terrane Models", value: "12", icon: MapPin },
-  { label: "Avg. Accuracy", value: "89%", icon: Target },
 ];
 
 export function MLProspectivitySection() {
@@ -99,7 +90,7 @@ export function MLProspectivitySection() {
         </motion.div>
 
         {/* Model metrics */}
-        <motion.div {...fadeUp} className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <motion.div {...fadeUp} className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
           {modelMetrics.map((metric, idx) => (
             <Card key={metric.label} className="text-center bg-background/50 backdrop-blur">
               <CardContent className="p-6">
@@ -133,13 +124,7 @@ export function MLProspectivitySection() {
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <h3 className="font-semibold text-lg">{capability.title}</h3>
-                          <p className="text-sm text-muted-foreground">{capability.titleAr}</p>
                         </div>
-                        {capability.accuracy && (
-                          <Badge className="bg-saudi-green-100 text-saudi-green-700 dark:bg-saudi-green-900/40 dark:text-saudi-green-300 border-0">
-                            {capability.accuracy} accuracy
-                          </Badge>
-                        )}
                       </div>
                       
                       <p className="text-sm text-muted-foreground mt-3">

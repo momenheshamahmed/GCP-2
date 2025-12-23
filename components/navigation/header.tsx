@@ -7,41 +7,20 @@ import {
   Mountain,
   Menu,
   X,
-  Sun,
-  Moon,
-  Globe,
-  Search,
-  Monitor,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useIsScrolled } from "@/lib/hooks/use-scroll";
-import { useTheme } from "@/lib/providers/theme-provider";
-import { useAppStore } from "@/lib/store";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const navigation = [
-  { name: "Home", nameAr: "الرئيسية", href: "/" },
-  { name: "Map", nameAr: "الخريطة", href: "/map" },
-  { name: "Geology", nameAr: "الجيولوجيا", href: "/geology" },
-  { name: "Minerals", nameAr: "المعادن", href: "/minerals" },
-  { name: "Investment", nameAr: "الاستثمار", href: "/investment" },
-  { name: "Tenders", nameAr: "المناقصات", href: "/tenders" },
-  { name: "Infrastructure", nameAr: "البنية التحتية", href: "/infrastructure" },
-  { name: "Companies", nameAr: "الشركات", href: "/companies" },
+  { name: "Home", href: "/" },
+  { name: "Map", href: "/map" },
 ];
 
 export function Header() {
   const pathname = usePathname();
   const isScrolled = useIsScrolled(50);
-  const { theme, setTheme, resolvedTheme } = useTheme();
-  const { language, setLanguage } = useAppStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // On homepage with dark hero, use light text when not scrolled
@@ -80,13 +59,13 @@ export function Header() {
                   "text-lg font-bold transition-colors",
                   useHeroStyles ? "text-white" : "text-foreground"
                 )}>
-                  {language === "ar" ? "التعدين السعودي" : "Saudi Mining"}
+                  GDAC
                 </span>
                 <span className={cn(
                   "block text-xs -mt-1 transition-colors",
                   useHeroStyles ? "text-gray-300" : "text-muted-foreground"
                 )}>
-                  {language === "ar" ? "المنصة" : "Platform"}
+                  Platform
                 </span>
               </div>
             </Link>
@@ -116,7 +95,7 @@ export function Header() {
                         : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                   )}
                 >
-                  {language === "ar" ? item.nameAr : item.name}
+                  {item.name}
                   {isActive && (
                     <motion.div
                       layoutId="activeNav"
@@ -145,76 +124,7 @@ export function Header() {
             transition={{ delay: 0.2 }}
             className="flex items-center gap-1"
           >
-            {/* Search Button */}
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className={cn(
-                "hidden sm:flex",
-                useHeroStyles && "text-white hover:bg-white/10 hover:text-white"
-              )}
-            >
-              <Search className="h-5 w-5" />
-            </Button>
-
-            {/* Language Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setLanguage(language === "en" ? "ar" : "en")}
-              className={cn(
-                "hidden sm:flex gap-1.5",
-                useHeroStyles && "text-white hover:bg-white/10 hover:text-white"
-              )}
-            >
-              <Globe className="h-4 w-4" />
-              <span className="text-xs font-medium uppercase">
-                {language === "en" ? "العربية" : "EN"}
-              </span>
-            </Button>
-
-            {/* Theme Toggle Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="icon"
-                  className={cn(
-                    useHeroStyles && "text-white hover:bg-white/10 hover:text-white"
-                  )}
-                >
-                  {resolvedTheme === "dark" ? (
-                    <Moon className="h-5 w-5" />
-                  ) : (
-                    <Sun className="h-5 w-5" />
-                  )}
-                  <span className="sr-only">Toggle theme</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setTheme("light")}>
-                  <Sun className="mr-2 h-4 w-4" />
-                  <span>{language === "ar" ? "فاتح" : "Light"}</span>
-                  {theme === "light" && <span className="ml-auto">✓</span>}
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("dark")}>
-                  <Moon className="mr-2 h-4 w-4" />
-                  <span>{language === "ar" ? "داكن" : "Dark"}</span>
-                  {theme === "dark" && <span className="ml-auto">✓</span>}
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("system")}>
-                  <Monitor className="mr-2 h-4 w-4" />
-                  <span>{language === "ar" ? "النظام" : "System"}</span>
-                  {theme === "system" && <span className="ml-auto">✓</span>}
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
             {/* CTA Button */}
-            <Button variant="saudi" className="hidden sm:flex ml-2">
-              {language === "ar" ? "تسجيل الدخول" : "Sign In"}
-            </Button>
-
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
@@ -257,52 +167,11 @@ export function Header() {
                         : "text-muted-foreground hover:bg-muted/50"
                     )}
                   >
-                    {language === "ar" ? item.nameAr : item.name}
+                    {item.name}
                   </Link>
                 );
               })}
               
-              {/* Mobile Language and Theme Controls */}
-              <div className="px-4 py-3 border-t mt-2 flex items-center gap-4">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setLanguage(language === "en" ? "ar" : "en")}
-                  className="flex-1"
-                >
-                  <Globe className="h-4 w-4 mr-2" />
-                  {language === "en" ? "العربية" : "English"}
-                </Button>
-                <div className="flex gap-1">
-                  <Button
-                    variant={theme === "light" ? "secondary" : "ghost"}
-                    size="icon"
-                    onClick={() => setTheme("light")}
-                  >
-                    <Sun className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant={theme === "dark" ? "secondary" : "ghost"}
-                    size="icon"
-                    onClick={() => setTheme("dark")}
-                  >
-                    <Moon className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant={theme === "system" ? "secondary" : "ghost"}
-                    size="icon"
-                    onClick={() => setTheme("system")}
-                  >
-                    <Monitor className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-              
-              <div className="px-4 pt-4 border-t mt-4">
-                <Button variant="saudi" className="w-full">
-                  {language === "ar" ? "تسجيل الدخول" : "Sign In"}
-                </Button>
-              </div>
             </div>
           </motion.div>
         )}

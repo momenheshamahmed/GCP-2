@@ -3,7 +3,7 @@
  * Data source: https://open.data.gov.sa and https://ngdp.sgs.gov.sa
  * 
  * This service integrates with the Saudi Open Data Portal's Geological Database
- * provided by the Saudi Geological Survey (هيئة المساحة الجيولوجية السعودية)
+ * provided by the Saudi Geological Survey (   )
  */
 
 import type { CommodityType, MineralDeposit, Coordinates } from "@/types";
@@ -278,9 +278,9 @@ export function getCommodityHeatmap(
 export const SGS_DATASET_INFO = {
   id: SGS_DATASET_ID,
   titleEn: "Geological Database",
-  titleAr: "قاعدة البيانات الجيولوجية",
+  titleAr: "  ",
   provider: "Saudi Geological Survey",
-  providerAr: "هيئة المساحة الجيولوجية السعودية",
+  providerAr: "   ",
   portalUrl: "https://open.data.gov.sa",
   ngdPortalUrl: "https://ngd.sgs.gov.sa",
 };

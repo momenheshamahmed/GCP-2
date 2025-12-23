@@ -164,12 +164,24 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
 
   // Create mineral marker icon
   const createMineralIcon = useCallback((L: typeof import("leaflet")) => {
+    const palmIconSvg = encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 120">
+        <g fill="#008f6b">
+          <path d="M70 28c-10 0-21 8-23 15 10-4 17-2 23 2 6-4 13-6 23-2-2-7-13-15-23-15z"/>
+          <path d="M70 46c-8-6-19-9-30-4 6 7 13 9 20 9l-10 7c7 4 15 5 20 5s13-1 20-5l-10-7c7 0 14-2 20-9-11-5-22-2-30 4z"/>
+          <rect x="65" y="55" width="10" height="36" rx="2"/>
+        </g>
+        <path d="M105 52c18-10 32-10 42-6-6 13-14 22-26 28l-16 8z" fill="#8a5b2c"/>
+        <path d="M26 92c-6-6-6-16 0-22l36-36c6-6 16-6 22 0l36 36c6 6 6 16 0 22-6 6-16 6-22 0L70 64 48 86c-6 6-16 6-22 0z" fill="#008f6b" opacity="0.85"/>
+      </svg>
+    `);
+
     return L.divIcon({
       className: "",
-      html: `<div style="width:24px;height:24px;border-radius:50%;background:#D4AF37;border:3px solid white;box-shadow:0 4px 12px rgba(0,0,0,.3)"></div>`,
-      iconSize: [24, 24],
-      iconAnchor: [12, 12],
-      popupAnchor: [0, -12],
+      html: `<div style="width:32px;height:32px;background:url('data:image/svg+xml,${palmIconSvg}') center/contain no-repeat;"></div>`,
+      iconSize: [32, 32],
+      iconAnchor: [16, 16],
+      popupAnchor: [0, -16],
     });
   }, []);
 
@@ -225,6 +237,12 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
         className
       )}
     >
+      <style jsx global>{`
+        /* Hide any provider watermark/logo images that may appear in map controls */
+        .leaflet-control-container .leaflet-bottom.leaflet-right img {
+          display: none !important;
+        }
+      `}</style>
       {/* Top controls */}
       <div className="absolute z-[1000] left-3 right-3 top-3 flex flex-col gap-2 md:flex-row md:items-start md:justify-between pointer-events-none">
         <div className="pointer-events-auto"></div>
@@ -360,6 +378,7 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
           center={MAP_CENTER}
           zoom={DEFAULT_ZOOM}
           zoomControl={false}
+          attributionControl={false}
           scrollWheelZoom
           style={{ height: "100%", width: "100%" }}
           className="z-0"

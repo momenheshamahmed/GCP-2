@@ -173,39 +173,6 @@ export function GeologistToolsSection() {
           ))}
         </div>
 
-        {/* Workflow callout */}
-        <motion.div {...fadeUp} className="mt-12">
-          <Card className="bg-gradient-to-r from-saudi-green-50 to-saudi-gold-50/50 dark:from-saudi-green-950/50 dark:to-saudi-gold-950/30 border-saudi-green-200/50 dark:border-saudi-green-800/30">
-            <CardContent className="p-6 md:p-8">
-              <div className="flex flex-col lg:flex-row items-center gap-6">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Ruler className="w-5 h-5 text-saudi-green-600 dark:text-saudi-green-400" />
-                    <span className="font-medium text-saudi-green-700 dark:text-saudi-green-300">Typical Workflow</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">From data to discovery</h3>
-                  <p className="text-muted-foreground">
-                    Start with regional screening using heatmaps → Filter by commodity and terrane → 
-                    Analyze individual deposits → Export findings for field verification
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/map">
-                    <Button variant="saudi" size="lg" className="w-full sm:w-auto group">
-                      Start with Map
-                      <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </Link>
-                  <Link href="/geology">
-                    <Button variant="saudi-outline" size="lg" className="w-full sm:w-auto">
-                      Browse Terranes
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
       </div>
     </section>
   );

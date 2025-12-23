@@ -17,7 +17,7 @@ const regions: Region[] = [
   {
     id: "riyadh",
     name: "Riyadh",
-    nameAr: "الرياض",
+    nameAr: "",
     path: "M200,200 L250,180 L280,200 L270,250 L220,260 L200,240 Z",
     minerals: ["Phosphate", "Limestone"],
     projects: 12,
@@ -25,7 +25,7 @@ const regions: Region[] = [
   {
     id: "eastern",
     name: "Eastern Province",
-    nameAr: "المنطقة الشرقية",
+    nameAr: " ",
     path: "M280,150 L350,130 L380,180 L370,250 L320,260 L280,200 Z",
     minerals: ["Oil", "Natural Gas", "Sand"],
     projects: 45,
@@ -33,7 +33,7 @@ const regions: Region[] = [
   {
     id: "makkah",
     name: "Makkah",
-    nameAr: "مكة المكرمة",
+    nameAr: " ",
     path: "M80,220 L140,200 L160,240 L150,300 L100,310 L70,280 Z",
     minerals: ["Gold", "Copper", "Silver"],
     projects: 23,
@@ -41,7 +41,7 @@ const regions: Region[] = [
   {
     id: "madinah",
     name: "Madinah",
-    nameAr: "المدينة المنورة",
+    nameAr: " ",
     path: "M100,140 L160,120 L180,160 L160,200 L120,210 L90,180 Z",
     minerals: ["Gold", "Zinc", "Lead"],
     projects: 18,
@@ -49,7 +49,7 @@ const regions: Region[] = [
   {
     id: "asir",
     name: "Asir",
-    nameAr: "عسير",
+    nameAr: "",
     path: "M80,300 L130,280 L150,320 L140,380 L90,390 L60,350 Z",
     minerals: ["Copper", "Iron", "Rare Earths"],
     projects: 8,
@@ -57,7 +57,7 @@ const regions: Region[] = [
   {
     id: "tabuk",
     name: "Tabuk",
-    nameAr: "تبوك",
+    nameAr: "",
     path: "M50,80 L120,60 L150,100 L130,150 L80,160 L40,130 Z",
     minerals: ["Phosphate", "Iron", "Bauxite"],
     projects: 15,
@@ -65,7 +65,7 @@ const regions: Region[] = [
   {
     id: "najran",
     name: "Najran",
-    nameAr: "نجران",
+    nameAr: "",
     path: "M140,380 L200,360 L230,400 L220,440 L160,450 L130,420 Z",
     minerals: ["Gold", "Silver", "Copper"],
     projects: 6,

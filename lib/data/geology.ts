@@ -8,13 +8,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "midyan-terrane",
     name: "Midyan Terrane",
-    nameAr: "رقعة مدين",
+    nameAr: " ",
     type: "arc",
     location: {
       latitude: 28.5000,
       longitude: 35.0000,
       region: "Tabuk",
-      regionAr: "تبوك",
+      regionAr: "",
     },
     ageRange: {
       from: 780,
@@ -22,7 +22,7 @@ export const geologicalTerranes: GeologicalTerrane[] = [
       period: "Neoproterozoic",
     },
     description: "Northernmost terrane of the Arabian Shield, characterized by island arc volcanic rocks and associated granitic intrusions. Contains significant copper-gold mineralization.",
-    descriptionAr: "أقصى الرقع الشمالية في الدرع العربي، تتميز بصخور بركانية قوسية جزيرية ومتداخلات جرانيتية مصاحبة.",
+    descriptionAr: "             .",
     minerals: ["copper", "gold", "zinc", "silver"],
     area: 45000,
     geologicalFeatures: [
@@ -35,13 +35,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "hijaz-terrane",
     name: "Hijaz Terrane",
-    nameAr: "رقعة الحجاز",
+    nameAr: " ",
     type: "arc",
     location: {
       latitude: 24.5000,
       longitude: 40.0000,
       region: "Madinah",
-      regionAr: "المدينة المنورة",
+      regionAr: " ",
     },
     ageRange: {
       from: 760,
@@ -49,7 +49,7 @@ export const geologicalTerranes: GeologicalTerrane[] = [
       period: "Neoproterozoic",
     },
     description: "Central belt hosting major gold deposits including Mahd Ad'Dahab. Composed of bimodal volcanic rocks and calc-alkaline plutonic complexes.",
-    descriptionAr: "الحزام الأوسط الذي يستضيف رواسب الذهب الرئيسية بما في ذلك مهد الذهب.",
+    descriptionAr: "           .",
     minerals: ["gold", "silver", "copper", "zinc", "lead"],
     area: 85000,
     geologicalFeatures: [
@@ -63,13 +63,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "jiddah-terrane",
     name: "Jiddah Terrane",
-    nameAr: "رقعة جدة",
+    nameAr: " ",
     type: "arc",
     location: {
       latitude: 21.5000,
       longitude: 39.5000,
       region: "Makkah",
-      regionAr: "مكة المكرمة",
+      regionAr: " ",
     },
     ageRange: {
       from: 740,
@@ -91,13 +91,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "afif-terrane",
     name: "Afif Terrane",
-    nameAr: "رقعة عفيف",
+    nameAr: " ",
     type: "arc",
     location: {
       latitude: 23.5000,
       longitude: 43.0000,
       region: "Riyadh",
-      regionAr: "الرياض",
+      regionAr: "",
     },
     ageRange: {
       from: 750,
@@ -105,7 +105,7 @@ export const geologicalTerranes: GeologicalTerrane[] = [
       period: "Neoproterozoic",
     },
     description: "Largest terrane of the Arabian Shield, hosting major gold and base metal deposits. Contains the Al-Amar and Khnaiguiyah deposits.",
-    descriptionAr: "أكبر رقعة في الدرع العربي، تستضيف رواسب الذهب والمعادن الأساسية الرئيسية.",
+    descriptionAr: "          .",
     minerals: ["gold", "copper", "zinc", "lead", "silver"],
     area: 120000,
     geologicalFeatures: [
@@ -119,13 +119,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "ar-rayn-terrane",
     name: "Ar Rayn Terrane",
-    nameAr: "رقعة الرين",
+    nameAr: " ",
     type: "arc",
     location: {
       latitude: 22.0000,
       longitude: 45.5000,
       region: "Riyadh",
-      regionAr: "الرياض",
+      regionAr: "",
     },
     ageRange: {
       from: 680,
@@ -147,13 +147,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "asir-terrane",
     name: "Asir Terrane",
-    nameAr: "رقعة عسير",
+    nameAr: " ",
     type: "arc",
     location: {
       latitude: 19.0000,
       longitude: 42.5000,
       region: "Asir",
-      regionAr: "عسير",
+      regionAr: "",
     },
     ageRange: {
       from: 780,
@@ -173,13 +173,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "najran-terrane",
     name: "Najran Terrane",
-    nameAr: "رقعة نجران",
+    nameAr: " ",
     type: "arc",
     location: {
       latitude: 17.5000,
       longitude: 44.0000,
       region: "Najran",
-      regionAr: "نجران",
+      regionAr: "",
     },
     ageRange: {
       from: 750,
@@ -201,13 +201,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "hulayfah-ophiolite",
     name: "Hulayfah Ophiolite Belt",
-    nameAr: "حزام حليفة الأفيوليتي",
+    nameAr: "  ",
     type: "ophiolite",
     location: {
       latitude: 25.5000,
       longitude: 42.0000,
       region: "Madinah",
-      regionAr: "المدينة المنورة",
+      regionAr: " ",
     },
     ageRange: {
       from: 780,
@@ -228,13 +228,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "yanbu-ophiolite",
     name: "Yanbu Suture Zone",
-    nameAr: "منطقة ينبع اللحامية",
+    nameAr: "  ",
     type: "ophiolite",
     location: {
       latitude: 24.0000,
       longitude: 38.5000,
       region: "Madinah",
-      regionAr: "المدينة المنورة",
+      regionAr: " ",
     },
     ageRange: {
       from: 740,
@@ -256,13 +256,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "northern-phosphate",
     name: "Northern Phosphate Province",
-    nameAr: "مقاطعة الفوسفات الشمالية",
+    nameAr: "  ",
     type: "sedimentary",
     location: {
       latitude: 31.0000,
       longitude: 37.5000,
       region: "Northern Borders",
-      regionAr: "الحدود الشمالية",
+      regionAr: " ",
     },
     ageRange: {
       from: 70,
@@ -270,7 +270,7 @@ export const geologicalTerranes: GeologicalTerrane[] = [
       period: "Late Cretaceous to Eocene",
     },
     description: "World-class phosphate province with multiple sedimentary horizons. Contains Wa'ad Al-Shamal and Al-Jalamid deposits.",
-    descriptionAr: "مقاطعة فوسفات عالمية المستوى مع طبقات رسوبية متعددة.",
+    descriptionAr: "       .",
     minerals: ["phosphate"],
     area: 85000,
     geologicalFeatures: [
@@ -283,13 +283,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "eastern-sedimentary",
     name: "Eastern Sedimentary Basin",
-    nameAr: "الحوض الرسوبي الشرقي",
+    nameAr: "  ",
     type: "sedimentary",
     location: {
       latitude: 26.0000,
       longitude: 49.0000,
       region: "Eastern Province",
-      regionAr: "المنطقة الشرقية",
+      regionAr: " ",
     },
     ageRange: {
       from: 250,
@@ -311,13 +311,13 @@ export const geologicalTerranes: GeologicalTerrane[] = [
   {
     id: "harrat-rahat",
     name: "Harrat Rahat",
-    nameAr: "حرة رهط",
+    nameAr: " ",
     type: "volcanic",
     location: {
       latitude: 23.5000,
       longitude: 39.7000,
       region: "Madinah",
-      regionAr: "المدينة المنورة",
+      regionAr: " ",
     },
     ageRange: {
       from: 10,

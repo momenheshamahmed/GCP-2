@@ -495,19 +495,19 @@ export type SaudiRegion =
   | "Al Jawf";
 
 export const SAUDI_REGIONS: Record<SaudiRegion, { nameAr: string; capital: string }> = {
-  "Riyadh": { nameAr: "الرياض", capital: "Riyadh" },
-  "Makkah": { nameAr: "مكة المكرمة", capital: "Makkah" },
-  "Madinah": { nameAr: "المدينة المنورة", capital: "Madinah" },
-  "Eastern Province": { nameAr: "المنطقة الشرقية", capital: "Dammam" },
-  "Qassim": { nameAr: "القصيم", capital: "Buraydah" },
-  "Asir": { nameAr: "عسير", capital: "Abha" },
-  "Tabuk": { nameAr: "تبوك", capital: "Tabuk" },
-  "Hail": { nameAr: "حائل", capital: "Ha'il" },
-  "Northern Borders": { nameAr: "الحدود الشمالية", capital: "Arar" },
-  "Jazan": { nameAr: "جازان", capital: "Jazan" },
-  "Najran": { nameAr: "نجران", capital: "Najran" },
-  "Al Bahah": { nameAr: "الباحة", capital: "Al Bahah" },
-  "Al Jawf": { nameAr: "الجوف", capital: "Sakaka" },
+  "Riyadh": { nameAr: "", capital: "Riyadh" },
+  "Makkah": { nameAr: " ", capital: "Makkah" },
+  "Madinah": { nameAr: " ", capital: "Madinah" },
+  "Eastern Province": { nameAr: " ", capital: "Dammam" },
+  "Qassim": { nameAr: "", capital: "Buraydah" },
+  "Asir": { nameAr: "", capital: "Abha" },
+  "Tabuk": { nameAr: "", capital: "Tabuk" },
+  "Hail": { nameAr: "", capital: "Ha'il" },
+  "Northern Borders": { nameAr: " ", capital: "Arar" },
+  "Jazan": { nameAr: "", capital: "Jazan" },
+  "Najran": { nameAr: "", capital: "Najran" },
+  "Al Bahah": { nameAr: "", capital: "Al Bahah" },
+  "Al Jawf": { nameAr: "", capital: "Sakaka" },
 };
 
 // ============================================

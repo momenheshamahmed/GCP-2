@@ -32,7 +32,7 @@ const dataSources: DataSource[] = [
   {
     id: "sgs",
     name: "Saudi Geological Survey",
-    nameAr: "هيئة المساحة الجيولوجية السعودية",
+    nameAr: "   ",
     provider: "SGS",
     providerAr: "SGS",
     description: "Official geological database with comprehensive mineral deposit data, terrane boundaries, and exploration targets.",
@@ -46,9 +46,9 @@ const dataSources: DataSource[] = [
   {
     id: "open-data",
     name: "Saudi Open Data Portal",
-    nameAr: "بوابة البيانات المفتوحة",
+    nameAr: "  ",
     provider: "SDAIA",
-    providerAr: "سدايا",
+    providerAr: "",
     description: "National open data platform providing structured geological datasets with API access for integration.",
     dataTypes: ["Geological Database", "Infrastructure", "Licenses"],
     url: "https://open.data.gov.sa",
@@ -60,7 +60,7 @@ const dataSources: DataSource[] = [
   {
     id: "ngd-portal",
     name: "National Geoscience Database",
-    nameAr: "قاعدة البيانات الجيولوجية الوطنية",
+    nameAr: "   ",
     provider: "SGS",
     providerAr: "SGS",
     description: "Interactive geospatial platform with drill hole data, assay results, and geological maps.",
@@ -74,9 +74,9 @@ const dataSources: DataSource[] = [
   {
     id: "exploration",
     name: "Exploration License Data",
-    nameAr: "بيانات تراخيص الاستكشاف",
+    nameAr: "  ",
     provider: "Ministry of Industry",
-    providerAr: "وزارة الصناعة",
+    providerAr: " ",
     description: "Tender rounds, license boundaries, and exploration activity data across all regions.",
     dataTypes: ["Licenses", "Tenders", "Boundaries"],
     url: "https://mim.gov.sa",
@@ -89,7 +89,7 @@ const dataSources: DataSource[] = [
 
 export function DataSourcesShowcase() {
   return (
-    <section className="section-padding bg-background">
+    <section id="data-sources" className="section-padding bg-background">
       <div className="container mx-auto container-padding">
         <motion.div {...fadeUp} className="text-center mb-12">
           <Badge variant="saudi" className="mb-4">

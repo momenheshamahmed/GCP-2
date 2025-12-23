@@ -65,6 +65,12 @@ export function InteractiveMap({
   if (!isClient || !L) {
     return (
       <div className={`relative ${className}`} style={{ height }}>
+        <style jsx global>{`
+          /* Hide any provider watermark/logo images that may appear in map controls */
+          .leaflet-control-container .leaflet-bottom.leaflet-right img {
+            display: none !important;
+          }
+        `}</style>
         <Skeleton className="absolute inset-0 rounded-lg" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
@@ -77,38 +83,35 @@ export function InteractiveMap({
   }
 
   const createCustomIcon = (color: string = "#006C35") => {
+    const palmIconSvg = encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 120">
+        <g fill="${color}">
+          <path d="M70 28c-10 0-21 8-23 15 10-4 17-2 23 2 6-4 13-6 23-2-2-7-13-15-23-15z"/>
+          <path d="M70 46c-8-6-19-9-30-4 6 7 13 9 20 9l-10 7c7 4 15 5 20 5s13-1 20-5l-10-7c7 0 14-2 20-9-11-5-22-2-30 4z"/>
+          <rect x="65" y="55" width="10" height="36" rx="2"/>
+        </g>
+        <path d="M105 52c18-10 32-10 42-6-6 13-14 22-26 28l-16 8z" fill="#8a5b2c"/>
+        <path d="M26 92c-6-6-6-16 0-22l36-36c6-6 16-6 22 0l36 36c6 6 6 16 0 22-6 6-16 6-22 0L70 64 48 86c-6 6-16 6-22 0z" fill="${color}" opacity="0.85"/>
+      </svg>
+    `);
+
     return L.divIcon({
       className: "custom-marker",
-      html: `
-        <div style="
-          width: 32px;
-          height: 32px;
-          background: ${color};
-          border-radius: 50% 50% 50% 0;
-          transform: rotate(-45deg);
-          border: 3px solid white;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        ">
-          <div style="
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          "></div>
-        </div>
-      `,
+      html: `<div style="width:32px;height:32px;background:url('data:image/svg+xml,${palmIconSvg}') center/contain no-repeat;"></div>`,
       iconSize: [32, 32],
-      iconAnchor: [16, 32],
-      popupAnchor: [0, -32],
+      iconAnchor: [16, 16],
+      popupAnchor: [0, -16],
     });
   };
 
   return (
     <div className={`relative rounded-lg overflow-hidden ${className}`} style={{ height }}>
+      <style jsx global>{`
+        /* Hide any provider watermark/logo images that may appear in map controls */
+        .leaflet-control-container .leaflet-bottom.leaflet-right img {
+          display: none !important;
+        }
+      `}</style>
       <MapContainer
         center={center}
         zoom={zoom}

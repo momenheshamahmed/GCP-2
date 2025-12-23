@@ -27,7 +27,6 @@ import { DataSourcesShowcase } from "@/components/landing/DataSourcesShowcase";
 import { MLProspectivitySection } from "@/components/landing/MLProspectivitySection";
 import { GeologistToolsSection } from "@/components/landing/GeologistToolsSection";
 import { ScientificAnalyticsSection } from "@/components/landing/ScientificAnalyticsSection";
-import { useAppStore } from "@/lib/store";
 import { mineralDeposits } from "@/lib/data/minerals";
 import { geologicalTerranes } from "@/lib/data/geology";
 
@@ -39,31 +38,17 @@ const fadeUp = {
 };
 
 export default function HomePage() {
-  const { language } = useAppStore();
   const t = {
-    en: {
-      headline: "AI-Powered Mineral Prospectivity Platform",
-      sub: "Integrate geological data, apply machine learning models, and discover high-potential exploration targets across the Arabian Shield.",
-      exploreMap: "Explore Prospectivity Map",
-      viewData: "View Data Sources",
-      capability: "Scientific Capabilities",
-      mapPreview: "Interactive Geological Atlas",
-      mapPreviewSub: "Multi-layer visualization with deposits, terranes, heatmaps, and ML-generated prospectivity zones.",
-      dataIntegration: "Integrated Data Sources",
-      contact: "Research & Collaboration",
-    },
-    ar: {
-      headline: "منصة احتمالية المعادن بالذكاء الاصطناعي",
-      sub: "دمج البيانات الجيولوجية وتطبيق نماذج التعلم الآلي واكتشاف أهداف الاستكشاف عالية الإمكانية عبر الدرع العربي.",
-      exploreMap: "استكشاف خريطة الاحتمالية",
-      viewData: "عرض مصادر البيانات",
-      capability: "القدرات العلمية",
-      mapPreview: "الأطلس الجيولوجي التفاعلي",
-      mapPreviewSub: "تصور متعدد الطبقات مع الرواسب والرقع والخرائط الحرارية ومناطق الاحتمالية المولدة بالتعلم الآلي.",
-      dataIntegration: "مصادر البيانات المتكاملة",
-      contact: "البحث والتعاون",
-    },
-  }[language];
+    headline: "AI-Powered Mineral Prospectivity Platform",
+    sub: "Integrate geological data, apply machine learning models, and discover high-potential exploration targets across the Arabian Shield.",
+    exploreMap: "Explore Prospectivity Map",
+    viewData: "View Data Sources",
+    capability: "Scientific Capabilities",
+    mapPreview: "Interactive Geological Atlas",
+    mapPreviewSub: "Multi-layer visualization with deposits, terranes, heatmaps, and ML-generated prospectivity zones.",
+    dataIntegration: "Integrated Data Sources",
+    contact: "Research & Collaboration",
+  };
 
   const depositCount = mineralDeposits.length;
   const terraneCount = geologicalTerranes.length;
@@ -104,7 +89,7 @@ export default function HomePage() {
                     <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link href="/geology">
+                <Link href="#data-sources">
                   <Button size="xl" variant="outline" className="w-full sm:w-auto border-white/30 text-white hover:bg-white/15 hover:border-white/50">
                     <Database className="w-5 h-5 mr-2" />
                     {t.viewData}
@@ -113,7 +98,7 @@ export default function HomePage() {
               </div>
 
               {/* Scientific metrics */}
-              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6">
                 <StatCounter 
                   label="Mineral Deposits" 
                   value={depositCount} 
@@ -133,13 +118,6 @@ export default function HomePage() {
                   valueClassName="text-white" 
                   labelClassName="text-gray-300"
                 />
-                <StatCounter 
-                  label="ML Model Accuracy" 
-                  value={89} 
-                  suffix="%" 
-                  valueClassName="text-saudi-green-300" 
-                  labelClassName="text-gray-300"
-                />
               </div>
             </motion.div>
 
@@ -152,10 +130,6 @@ export default function HomePage() {
                       <Target className="w-5 h-5 text-blue-400" />
                       Prospectivity Zones
                     </div>
-                    <Badge className="bg-white/15 text-white border-white/20">
-                      <Activity className="w-3 h-3 mr-1" />
-                      Live Data
-                    </Badge>
                   </div>
                   <SaudiSilhouette className="w-full" />
                   <div className="mt-4 flex items-center justify-between text-xs">
@@ -198,25 +172,25 @@ export default function HomePage() {
               { 
                 icon: Database, 
                 title: "Data Integration", 
-                titleAr: "تكامل البيانات",
+                titleAr: " ",
                 desc: "Unified access to SGS geological databases, open data APIs, and survey records." 
               },
               { 
                 icon: Brain, 
                 title: "ML Prospectivity", 
-                titleAr: "احتمالية التعلم الآلي",
+                titleAr: "  ",
                 desc: "Machine learning models trained on 12,500+ samples for target identification." 
               },
               { 
                 icon: Layers, 
                 title: "Multi-layer Analysis", 
-                titleAr: "تحليل متعدد الطبقات",
+                titleAr: "  ",
                 desc: "Overlay geological, geochemical, and geophysical data for comprehensive insights." 
               },
               { 
                 icon: Compass, 
                 title: "Decision Support", 
-                titleAr: "دعم القرار",
+                titleAr: " ",
                 desc: "Tools and visualizations to help geologists prioritize exploration targets." 
               },
             ].map((c, i) => (
@@ -237,52 +211,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Interactive Map Preview */}
-      <section id="atlas" className="section-padding bg-muted/40">
-        <div className="container mx-auto container-padding space-y-10">
-          <motion.div {...fadeUp} className="text-center">
-            <Badge variant="gold" className="mb-4">
-              <Flame className="w-3 h-3 mr-1" />
-              {t.mapPreview}
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold">Visualize geological data in real-time</h2>
-            <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">{t.mapPreviewSub}</p>
-            <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
-              <Link href="/map">
-                <Button variant="saudi" size="lg" className="group w-full sm:w-auto">
-                  Open Interactive Map
-                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-              <Link href="/geology">
-                <Button variant="saudi-outline" size="lg" className="w-full sm:w-auto">
-                  <Mountain className="w-4 h-4 mr-2" />
-                  Explore Terranes
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-
-          <motion.div {...fadeUp} transition={{ duration: 0.55, delay: 0.05 }}>
-            <Link href="/map" className="block">
-              <div className="relative rounded-3xl overflow-hidden border border-border bg-background shadow-lg">
-                <div className="absolute inset-0 z-[900] bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute left-4 bottom-4 z-[950] flex items-center gap-2">
-                  <Badge className="bg-white/90 text-saudi-green-800 border-border">Click to open full map</Badge>
-                  <Badge className="bg-saudi-green-500/90 text-white border-0">
-                    <Activity className="w-3 h-3 mr-1" />
-                    Heatmap enabled
-                  </Badge>
-                </div>
-                <div className="pointer-events-none">
-                  <MineralMap height="520px" />
-                </div>
-              </div>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Data Sources */}
       <DataSourcesShowcase />
 
@@ -295,56 +223,6 @@ export default function HomePage() {
       {/* Geologist Tools */}
       <GeologistToolsSection />
 
-      {/* Research & Collaboration */}
-      <section className="section-padding bg-gradient-to-br from-saudi-green-950 to-black text-white relative overflow-hidden">
-        <div className="container mx-auto container-padding relative">
-          <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <Badge className="bg-blue-500/15 text-blue-200 border border-blue-500/25 mb-4">
-              {t.contact}
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold">Collaborate with us</h2>
-            <p className="text-gray-300 mt-3">
-              This platform is designed to support geological research and exploration planning.
-              For data access, API integration, or research collaboration, contact the Saudi Geological Survey.
-            </p>
-            
-            <div className="mt-8 grid sm:grid-cols-3 gap-4">
-              {[
-                { label: "Data Provider", value: "Saudi Geological Survey", link: "https://sgs.gov.sa" },
-                { label: "Open Data Portal", value: "open.data.gov.sa", link: "https://open.data.gov.sa" },
-                { label: "NGD Portal", value: "ngd.sgs.gov.sa", link: "https://ngd.sgs.gov.sa" },
-              ].map((c) => (
-                <a key={c.label} href={c.link} target="_blank" rel="noopener noreferrer">
-                  <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-colors cursor-pointer">
-                    <CardContent className="p-5">
-                      <div className="text-xs text-gray-400">{c.label}</div>
-                      <div className="font-semibold mt-1 flex items-center justify-center gap-1">
-                        {c.value}
-                        <ExternalLink className="w-3 h-3" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </a>
-              ))}
-            </div>
-            
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link href="/map">
-                <Button variant="saudi" size="xl" className="w-full sm:w-auto">
-                  {t.exploreMap}
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <a href="https://ngd.sgs.gov.sa" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="xl" className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10">
-                  <FileJson className="w-5 h-5 mr-2" />
-                  Access Raw Data
-                </Button>
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }

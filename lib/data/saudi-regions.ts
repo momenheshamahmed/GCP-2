@@ -2,7 +2,7 @@ import type { Feature, FeatureCollection, Polygon } from "geojson";
 
 /**
  * Saudi Arabia Administrative Regions GeoJSON
- * The Kingdom has 13 administrative regions (مناطق إدارية)
+ * The Kingdom has 13 administrative regions ( )
  * Coordinates are approximate boundaries for visualization purposes
  */
 
@@ -27,9 +27,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "riyadh",
         name: "Riyadh",
-        nameAr: "الرياض",
+        nameAr: "",
         capital: "Riyadh",
-        capitalAr: "الرياض",
+        capitalAr: "",
         capitalCoords: [24.7136, 46.6753],
         area: 404240,
         population: 8454453,
@@ -49,9 +49,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "makkah",
         name: "Makkah",
-        nameAr: "مكة المكرمة",
+        nameAr: " ",
         capital: "Makkah",
-        capitalAr: "مكة المكرمة",
+        capitalAr: " ",
         capitalCoords: [21.4225, 39.8262],
         area: 153128,
         population: 8557766,
@@ -70,9 +70,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "madinah",
         name: "Madinah",
-        nameAr: "المدينة المنورة",
+        nameAr: " ",
         capital: "Madinah",
-        capitalAr: "المدينة المنورة",
+        capitalAr: " ",
         capitalCoords: [24.5247, 39.5692],
         area: 151990,
         population: 2132679,
@@ -91,9 +91,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "eastern",
         name: "Eastern Province",
-        nameAr: "المنطقة الشرقية",
+        nameAr: " ",
         capital: "Dammam",
-        capitalAr: "الدمام",
+        capitalAr: "",
         capitalCoords: [26.4207, 50.0888],
         area: 672522,
         population: 4900325,
@@ -112,9 +112,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "qassim",
         name: "Qassim",
-        nameAr: "القصيم",
+        nameAr: "",
         capital: "Buraydah",
-        capitalAr: "بريدة",
+        capitalAr: "",
         capitalCoords: [26.3292, 43.9750],
         area: 58046,
         population: 1455693,
@@ -132,9 +132,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "asir",
         name: "Asir",
-        nameAr: "عسير",
+        nameAr: "",
         capital: "Abha",
-        capitalAr: "أبها",
+        capitalAr: "",
         capitalCoords: [18.2164, 42.5053],
         area: 76693,
         population: 2211875,
@@ -153,9 +153,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "tabuk",
         name: "Tabuk",
-        nameAr: "تبوك",
+        nameAr: "",
         capital: "Tabuk",
-        capitalAr: "تبوك",
+        capitalAr: "",
         capitalCoords: [28.3838, 36.5550],
         area: 136000,
         population: 910030,
@@ -173,9 +173,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "hail",
         name: "Ha'il",
-        nameAr: "حائل",
+        nameAr: "",
         capital: "Ha'il",
-        capitalAr: "حائل",
+        capitalAr: "",
         capitalCoords: [27.5114, 41.7208],
         area: 103887,
         population: 731147,
@@ -193,9 +193,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "northern-borders",
         name: "Northern Borders",
-        nameAr: "الحدود الشمالية",
+        nameAr: " ",
         capital: "Arar",
-        capitalAr: "عرعر",
+        capitalAr: "",
         capitalCoords: [30.9753, 41.0381],
         area: 111797,
         population: 375310,
@@ -213,9 +213,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "jazan",
         name: "Jazan",
-        nameAr: "جازان",
+        nameAr: "",
         capital: "Jazan",
-        capitalAr: "جازان",
+        capitalAr: "",
         capitalCoords: [16.8892, 42.5611],
         area: 11671,
         population: 1567547,
@@ -233,9 +233,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "najran",
         name: "Najran",
-        nameAr: "نجران",
+        nameAr: "",
         capital: "Najran",
-        capitalAr: "نجران",
+        capitalAr: "",
         capitalCoords: [17.4924, 44.1277],
         area: 149511,
         population: 582243,
@@ -253,9 +253,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "al-bahah",
         name: "Al Bahah",
-        nameAr: "الباحة",
+        nameAr: "",
         capital: "Al Bahah",
-        capitalAr: "الباحة",
+        capitalAr: "",
         capitalCoords: [20.0129, 41.4677],
         area: 9921,
         population: 476172,
@@ -273,9 +273,9 @@ export const saudiRegionsGeoJSON: FeatureCollection<Polygon, SaudiRegionProperti
       properties: {
         id: "al-jawf",
         name: "Al Jawf",
-        nameAr: "الجوف",
+        nameAr: "",
         capital: "Sakakah",
-        capitalAr: "سكاكا",
+        capitalAr: "",
         capitalCoords: [29.9697, 40.2064],
         area: 100212,
         population: 508475,

@@ -213,31 +213,6 @@ export function ScientificAnalyticsSection() {
           </motion.div>
         </div>
 
-        {/* Key insights banner */}
-        <motion.div {...fadeUp} className="mt-8">
-          <Card className="bg-gradient-to-r from-saudi-green-50 to-blue-50 dark:from-saudi-green-950/30 dark:to-blue-950/30 border-saudi-green-200/50 dark:border-saudi-green-800/30">
-            <CardContent className="p-6">
-              <div className="grid md:grid-cols-4 gap-6">
-                {[
-                  { icon: Gem, label: "Gold Deposits", value: depositStats.byCommodity.gold, suffix: "" },
-                  { icon: TrendingUp, label: "High Potential Zones", value: geologyStats.highPotential, suffix: "" },
-                  { icon: Scale, label: "Total Terranes", value: geologicalTerranes.length, suffix: "" },
-                  { icon: Percent, label: "Exploration Stage", value: Math.round((depositStats.exploration / depositStats.total) * 100), suffix: "%" },
-                ].map((item) => (
-                  <div key={item.label} className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-saudi-green-100 dark:bg-saudi-green-900/40 flex items-center justify-center shrink-0">
-                      <item.icon className="w-5 h-5 text-saudi-green-600 dark:text-saudi-green-400" />
-                    </div>
-                    <div>
-                      <div className="text-xl font-bold">{item.value}{item.suffix}</div>
-                      <div className="text-xs text-muted-foreground">{item.label}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
       </div>
     </section>
   );
