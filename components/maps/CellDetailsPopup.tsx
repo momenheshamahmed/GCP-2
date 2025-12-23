@@ -12,7 +12,7 @@ export interface CellDetailsPopupProps {
 export function CellDetailsPopup({ cell }: CellDetailsPopupProps) {
   const scoreCategory = getScoreCategory(cell.score);
   const scorePercentage = (cell.score * 100).toFixed(1);
-  const percentileRank = cell.percentile ? Math.round(cell.percentile * 100) : null;
+  const percentileRank = cell.percentile ? cell.percentile.toFixed(2) : null;
 
   return (
     <Card className="border-0 shadow-none w-[320px]">

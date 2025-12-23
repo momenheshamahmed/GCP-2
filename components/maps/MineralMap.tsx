@@ -56,9 +56,9 @@ const TILE_LAYERS: Record<BaseLayer, { name: string; url: string; attribution: s
   },
 };
 
-// Map center for the data extent (116C map sheet)
-const MAP_CENTER: [number, number] = [27.3, 42.37];
-const DEFAULT_ZOOM = 10;
+// Map center for the data extent (all map sheets with high-scoring cells)
+const MAP_CENTER: [number, number] = [22.18, 41.73];
+const DEFAULT_ZOOM = 8;
 
 export interface MineralMapProps {
   className?: string;
@@ -125,7 +125,7 @@ export function MineralMap({ className, height = "620px" }: MineralMapProps) {
 
       try {
         const [cells, geology, faults, dikes, minerals] = await Promise.all([
-          fetchGridCells(),
+          fetchGridCells({ min_score: 0.1 }), // Only load cells with score >= 0.1 (low to high prospectivity)
           fetchGeologyLayer({ simplify: 0.001 }),
           fetchFaultsLayer({ simplify: 0.001 }),
           fetchDikesLayer({ simplify: 0.001 }),
