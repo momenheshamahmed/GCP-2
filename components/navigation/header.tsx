@@ -53,20 +53,12 @@ export function Header() {
                 className="w-10 h-10 lg:w-12 lg:h-12"
                 priority
               />
-              <div className="hidden sm:block">
-                <span className={cn(
-                  "text-lg font-bold transition-colors",
-                  useHeroStyles ? "text-white" : "text-foreground"
-                )}>
-                  SGS
-                </span>
-                <span className={cn(
-                  "block text-xs -mt-1 transition-colors",
-                  useHeroStyles ? "text-gray-300" : "text-muted-foreground"
-                )}>
-                  Geological Survey
-                </span>
-              </div>
+              <span className={cn(
+                "text-xl font-bold transition-colors",
+                useHeroStyles ? "text-white" : "text-foreground"
+              )}>
+                GDAC
+              </span>
             </Link>
           </motion.div>
 

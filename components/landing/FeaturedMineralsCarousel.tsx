@@ -75,3 +75,4 @@ export function FeaturedMineralsCarousel({ className }: { className?: string }) 
 
 
 
+
