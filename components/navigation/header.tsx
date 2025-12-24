@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import {
-  Mountain,
   Menu,
   X,
 } from "lucide-react";
@@ -45,27 +45,26 @@ export function Header() {
             className="flex items-center gap-3"
           >
             <Link href="/" className="flex items-center gap-3">
-              <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-saudi-green-500 to-saudi-green-700 flex items-center justify-center shadow-lg">
-                  <Mountain className="w-6 h-6 text-white" />
-                </div>
-                <div className={cn(
-                  "absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-saudi-gold-500 border-2",
-                  useHeroStyles ? "border-gray-900" : "border-background"
-                )} />
-              </div>
+              <Image
+                src="/images/sgs-logo.svg"
+                alt="Saudi Geological Survey Logo"
+                width={48}
+                height={48}
+                className="w-10 h-10 lg:w-12 lg:h-12"
+                priority
+              />
               <div className="hidden sm:block">
                 <span className={cn(
                   "text-lg font-bold transition-colors",
                   useHeroStyles ? "text-white" : "text-foreground"
                 )}>
-                  GDAC
+                  SGS
                 </span>
                 <span className={cn(
                   "block text-xs -mt-1 transition-colors",
                   useHeroStyles ? "text-gray-300" : "text-muted-foreground"
                 )}>
-                  Platform
+                  Geological Survey
                 </span>
               </div>
             </Link>
